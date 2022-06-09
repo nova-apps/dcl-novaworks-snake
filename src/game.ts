@@ -95,36 +95,61 @@ const snake = new Entity()
 snake.addComponent(new SphereShape()).withCollisions = true
 snake.addComponent(new Transform({ 
         position: new Vector3(16, 1, 16),
-        scale: new Vector3(0.5, 0.5, 1),
+        scale: new Vector3(2, 0.5, 2),
         rotation: new Quaternion(0, 0, 0, 1)
 }))
 
 snake.addComponent(
     new utils.TriggerComponent(new utils.TriggerSphereShape())
-  )
+)
+
+function createRingWall(x: number, z: number, rotation: number){
+    let ringSide = new Entity
+    ringSide.addComponent(new PlaneShape())
+    ringSide.addComponent(new Transform({ 
+        position: new Vector3(x, 1, z),
+        scale: new Vector3(2, 4, 1),
+        rotation: new Quaternion(0, 1, 0, rotation)
+    }))
+
+    let transparentMaterial = new Material
+    transparentMaterial.albedoColor = new Color4(0, 0, 0, 0)
+    ringSide.addComponent(transparentMaterial)
+
+    engine.addEntity(ringSide)
+    ringSide.setParent(snake)
+}
+
+createRingWall(1, 0, 1)
+createRingWall(-1, 0, 1)
+createRingWall(0, 1, 0)
+
 
 let snakeMaterial = new Material()
 snakeMaterial.albedoColor = new Color4(0, 1, 0, 1)
 snake.addComponent(snakeMaterial)
 engine.addEntity(snake)
 
-let path = []
-path[0] = new Vector3(16, 1, 16)
-path[1] = new Vector3(1, 1, 64)
-snake.addComponent(new utils.FollowPathComponent(path, 10))
-let direction = 'TOP'
+import { movePlayerTo } from '@decentraland/RestrictedActions'
 
-// Controls
 const canvas = new UICanvas()
-const top = new UIImage(canvas, new Texture("images/top.png"))
-top.positionY = -250
-top.positionX = 150
-top.width = "35px"
-top.height = "35px"
-top.sourceWidth = 77
-top.sourceHeight = 77
-top.isPointerBlocker = true
-top.onClick = new OnPointerDown(() => {
+const start = new UIImage(canvas, new Texture("images/top.png"))
+start.positionY = -250
+start.positionX = 150
+start.width = "35px"
+start.height = "35px"
+start.sourceWidth = 77
+start.sourceHeight = 77
+start.isPointerBlocker = true
+start.onClick = new OnPointerDown(() => {
+    snake.getComponent(Transform).position.set(16, 1, 16)
+    movePlayerTo({ x: 16, y: 3, z: 16 }, { x: 0, y: 1, z: 8 })
+})
+
+const input = Input.instance
+let direction = ' '
+
+input.subscribe("BUTTON_DOWN", ActionButton.FORWARD, false, (e) => {    
     if(direction != 'TOP' && direction != 'BOTTOM'){
         direction = 'TOP'
         snake.removeComponent(utils.FollowPathComponent)
@@ -136,35 +161,7 @@ top.onClick = new OnPointerDown(() => {
     }
 })
 
-const bottom = new UIImage(canvas, new Texture("images/bottom.png"))
-bottom.positionY = -300
-bottom.positionX = 150
-bottom.width = "35px"
-bottom.height = "35px"
-bottom.sourceWidth = 77
-bottom.sourceHeight = 77
-bottom.isPointerBlocker = true
-bottom.onClick = new OnPointerDown(() => {
-    if(direction != 'TOP' && direction != 'BOTTOM'){
-        direction = 'BOTTOM'
-        snake.removeComponent(utils.FollowPathComponent)
-        let newPath = []
-        newPath[0] = new Vector3(snake.getComponent(Transform).position.x, snake.getComponent(Transform).position.y, snake.getComponent(Transform).position.z)
-        newPath[1] = new Vector3(snake.getComponent(Transform).position.x, snake.getComponent(Transform).position.y, 0)
-        snake.addComponent(new utils.FollowPathComponent(newPath, 4))
-        snake.getComponent(Transform).rotation.set(0, 0, 0, 1)
-    }
-})
-
-const left = new UIImage(canvas, new Texture("images/left.png"))
-left.positionY = -300
-left.positionX = 100
-left.width = "35px"
-left.height = "35px"
-left.sourceWidth = 77
-left.sourceHeight = 77
-left.isPointerBlocker = true
-left.onClick = new OnPointerDown(() => {
+input.subscribe("BUTTON_DOWN", ActionButton.LEFT, false, (e) => {
     if(direction != 'LEFT' && direction != 'RIGTH'){
         direction = 'LEFT'
         snake.removeComponent(utils.FollowPathComponent)
@@ -174,18 +171,9 @@ left.onClick = new OnPointerDown(() => {
         snake.addComponent(new utils.FollowPathComponent(newPath, 4))
         snake.getComponent(Transform).rotation.set(0, 1, 0, 1)
     }
-    
 })
 
-const rigth = new UIImage(canvas, new Texture("images/rigth.png"))
-rigth.positionY = -300
-rigth.positionX = 200
-rigth.width = "35px"
-rigth.height = "35px"
-rigth.sourceWidth = 77
-rigth.sourceHeight = 77
-rigth.isPointerBlocker = true
-rigth.onClick = new OnPointerDown(() => {
+input.subscribe("BUTTON_DOWN", ActionButton.RIGHT, false, (e) => {
     if(direction != 'LEFT' && direction != 'RIGTH'){
         direction = 'RIGTH'
         snake.removeComponent(utils.FollowPathComponent)
@@ -194,5 +182,17 @@ rigth.onClick = new OnPointerDown(() => {
         newPath[1] = new Vector3(64, snake.getComponent(Transform).position.y, snake.getComponent(Transform).position.z)
         snake.addComponent(new utils.FollowPathComponent(newPath, 4))
         snake.getComponent(Transform).rotation.set(0, 1, 0, 1)
+    }
+})
+
+input.subscribe("BUTTON_DOWN", ActionButton.BACKWARD, false, (e) => {
+    if(direction != 'TOP' && direction != 'BOTTOM'){
+        direction = 'BOTTOM'
+        snake.removeComponent(utils.FollowPathComponent)
+        let newPath = []
+        newPath[0] = new Vector3(snake.getComponent(Transform).position.x, snake.getComponent(Transform).position.y, snake.getComponent(Transform).position.z)
+        newPath[1] = new Vector3(snake.getComponent(Transform).position.x, snake.getComponent(Transform).position.y, 0)
+        snake.addComponent(new utils.FollowPathComponent(newPath, 4))
+        snake.getComponent(Transform).rotation.set(0, 0, 0, 1)
     }
 })

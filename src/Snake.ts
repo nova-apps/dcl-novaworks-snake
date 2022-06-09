@@ -2,7 +2,7 @@ import { Node, Head, Segment} from "./Node";
 
 export class Snake implements ISystem{
 
-    public head: Head = new Head(this)
+    public head: Head = new Head(this) // So we can access to the snake from the head
     public body: any = []
 
     constructor(){
@@ -37,17 +37,22 @@ export class Snake implements ISystem{
         segment.addComponent(new SphereShape())
         segment.addComponent(
           new Transform({
-            scale: new Vector3(scale,scale,scale), // Have to be relative to thew length
+            scale: new Vector3(scale,scale,scale), // Have to be relative to Segment.quantiy 
             position: new Vector3(
-                prevNodePos.x,
+                prevNodePos.x, //ver en arena como era esto
                 prevNodePos.y,
-                prevNodePos.z - 1
+                prevNodePos.z - segment.distance //ver en arena como era esto
             ),
           })
         )
         this.body.push(segment)
         engine.addEntity(segment)
     }
+    public die(){
+        this.reborn()
+    }
+
+    public reborn(){}
 
     update(dt: number) {
       /*

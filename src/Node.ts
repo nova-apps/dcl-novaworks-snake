@@ -21,14 +21,14 @@ export class Head extends Node{
     
     public turn(){}
 
-    /* Head hists Wall or own Body */ 
+    /* Head hits Wall or own Body */ 
     public hit(){
         //this.snake.die()
     }
 
     public eatsApple(){
         // this.snake.addSegment(
-        //     this.snake.body[-1], // previus tail, last segment
+        //     this.snake.body[Segment.quantity], // last segment aka tail
         //     0.5 // have to be relative to Segment.quantity
         // ) 
     }

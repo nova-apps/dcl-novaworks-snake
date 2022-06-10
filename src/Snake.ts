@@ -11,10 +11,6 @@ export class Snake implements ISystem{
     constructor(){
         this.born()
         this.addSegment(this.head) // segmento 0 aka cuello
-        // TODO, take this out of here, its have to be trigered when the head eats an applle
-        for (var i = 0; i < 2; i++) {
-            this.addSegment(this.body[i]) // resto de los segmentos
-        }
     }
 
     /* Inits the snake */
@@ -37,7 +33,6 @@ export class Snake implements ISystem{
         // let snakeMaterial = new Material()
         // const snakeTexture = new Texture("images/Snake.png")
         // snakeMaterial.albedoTexture = snakeTexture
-
         // this.head.addComponent(snakeMaterial)
 
         engine.addEntity(this.head)
@@ -45,17 +40,9 @@ export class Snake implements ISystem{
 
     /* Call this metod when the head eats an apple */
     public addSegment(
-      prevNode : Node,
+      prevNode : Node
     ){
         let segment = new Segment(prevNode)
-        let prevNodePos = prevNode.getComponent(Transform).position
-        segment.place(
-            new Vector3(
-                prevNodePos.x,
-                prevNodePos.y,
-                prevNodePos.z - segment.distance
-            ),
-        )
         this.body.push(segment)
     }
 

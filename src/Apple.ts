@@ -27,10 +27,8 @@ export class Apple extends Entity {
                 {
                     onTriggerEnter : () => {
                         this.getComponent(Transform).position = new Vector3(1 + Math.random() * 64, 1, 1 + Math.random() * 64)
-                        this.snake.addSegment(this.snake.body[Segment.quantity])
-                        this.score = parseInt(ui.scoreValue.value)
-                        this.score++
-                        this.ui.scoreValue.value = 'this.score.toString()'
+                        this.snake.addSegment(this.snake.body[Segment.quantity - 1 ])
+                        this.ui.scoreValue.value = Segment.quantity.toString()
                     }
                 }
             )

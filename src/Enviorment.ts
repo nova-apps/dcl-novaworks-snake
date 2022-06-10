@@ -3,6 +3,12 @@ import * as utils from '@dcl/ecs-scene-utils'
 
 export class Enviorment {
     constructor(){
+        this.addFloor()
+        this.addRoof()
+        this.AddWalls()
+    }
+
+    public addFloor(){
         const floor = new Entity()
         floor.addComponent(new PlaneShape())
         floor.addComponent(new Transform({
@@ -16,7 +22,9 @@ export class Enviorment {
         floor.addComponent(floorMaterial)
         
         engine.addEntity(floor)
-        
+    }
+
+    public addRoof(){
         const roof = new Entity()
         roof.addComponent(new PlaneShape())
         roof.addComponent(new Transform({
@@ -30,7 +38,9 @@ export class Enviorment {
         roof.addComponent(roofMaterial)
         
         engine.addEntity(roof)
-        
+    }
+
+    public AddWalls(){
         let wallMaterial = new Material()
         wallMaterial.albedoColor = new Color4(0, 0, 0, 0.8)
         
@@ -55,9 +65,7 @@ export class Enviorment {
                   {
                       onTriggerEnter : () => {
                         // log('wall')
-                        // endGame()
                     },
-                    // enableDebug: true
                   }
                 )
             )

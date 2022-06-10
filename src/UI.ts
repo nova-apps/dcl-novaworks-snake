@@ -33,15 +33,15 @@ export class UI {
         //     // movePlayerTo({ x: 14, y: 0, z: 12 }, { x: 16, y: 0, z: 16 })
         // }
 
-        const scoreText = new UIText(this.canvas)
-        scoreText.fontSize = 15
-        scoreText.vAlign = "bottom"
-        scoreText.positionX = -260
-        scoreText.value = 'Score:'
+        // const scoreText = new UIText(this.canvas)
+        // scoreText.fontSize = 15
+        // scoreText.vAlign = "bottom"
+        // scoreText.positionX = -260
+        // scoreText.value = 'Score:'
 
-        this.scoreValue.fontSize = 15
-        this.scoreValue.vAlign = "bottom"
-        this.scoreValue.positionX = -200
+        // this.scoreValue.fontSize = 15
+        // this.scoreValue.vAlign = "bottom"
+        // this.scoreValue.positionX = -200
     }
 
     public shiftControls(){
@@ -81,6 +81,12 @@ export class UI {
     }
 
     public addControls(){
+        const instructions = new UIText(this.canvas)
+        instructions.fontSize = 15
+        instructions.vAlign = "bottom"
+        instructions.positionX = -500
+        instructions.value = 'Use the arrows or hold shift and use WASD to move the snake'
+
         const top = new UIImage(this.canvas, new Texture("images/top.png"))
         top.positionY = -250
         top.positionX = 250

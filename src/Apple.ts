@@ -3,17 +3,11 @@ import { Segment } from './Node';
 import { Snake } from './Snake';
 
 export class Apple extends Entity {
-    public id : number = 0;
-    public transform = new Transform()
-    public position: Vector3 = new Vector3(1,1,1)
-    
     constructor(public snake: Snake){
         super()
 
         this.snake = snake
-
         let score = 0
-
         this.addComponent(new SphereShape())
         this.addComponent(new Transform({
             scale: new Vector3(0.5, 0.5, 0.5)
@@ -36,9 +30,6 @@ export class Apple extends Entity {
             }
             )
         )
-
         engine.addEntity(this)
     }
-
-    public dies(){}
 }

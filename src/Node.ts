@@ -2,7 +2,7 @@ import { Snake } from "./Snake";
 
 export class Node extends Entity{
     public id : number = 0;
-    public transform = this.getComponent(Transform);
+    //public transform = this.getComponent(Transform);
     constructor(){
         super();
     }
@@ -49,25 +49,25 @@ export class Segment extends Node{
     }
 
     //public follow( fraction : number ){
-    public follow(){
-        this.transform.position = Vector3.Lerp(
-           this.transform.position,
-           this.prevNode.transform.position,
-           this.spacing
-        )
-    }
+    // public follow(){
+    //     this.transform.position = Vector3.Lerp(
+    //        this.transform.position,
+    //        this.prevNode.transform.position,
+    //        this.spacing
+    //     )
+    // }
 
-    /** Imitate rotatation */
-    //public rotate(fraction:number){
-    public rotate(){
-        let originalRot = this.transform.rotation.eulerAngles
-        let targetRot = this.prevNode.transform.rotation.eulerAngles
-        let slerpRot = Quaternion.Slerp(
-            Quaternion.Euler(originalRot.x,originalRot.y,originalRot.z),
-            Quaternion.Euler(targetRot.x,targetRot.y,targetRot.z), 
-            this.spacing
-        )
-        this.transform.rotation = slerpRot
-        //fraction += dt / 5
-    }
+    // /** Imitate rotatation */
+    // //public rotate(fraction:number){
+    // public rotate(){
+    //     let originalRot = this.transform.rotation.eulerAngles
+    //     let targetRot = this.prevNode.transform.rotation.eulerAngles
+    //     let slerpRot = Quaternion.Slerp(
+    //         Quaternion.Euler(originalRot.x,originalRot.y,originalRot.z),
+    //         Quaternion.Euler(targetRot.x,targetRot.y,targetRot.z), 
+    //         this.spacing
+    //     )
+    //     this.transform.rotation = slerpRot
+    //     //fraction += dt / 5
+    // }
 }

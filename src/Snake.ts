@@ -58,12 +58,14 @@ export class Snake implements ISystem{
     public reborn(){}
 
     update(dt: number) {
+
       // let distance = Math.floor( Vector3.Distance(this.path.origin, this.path.target) )
       // let speed = Math.floor( distance * spacing )
-      for (let segment of this.body) {
-        segment.follow()
-        segment.rotar()
-      };
+      //for (let segment of this.body) {
+      //  segment.follow()
+      //  segment.rotar()
+      //};
+
     }
 
 }

@@ -4,8 +4,9 @@ import { Enviorment } from './Enviorment'
 import { UI } from './UI' 
 
 let snake = new Snake()
-new Apple(snake)
+let ui = new UI(snake)
+new Apple(snake, ui)
 new Enviorment()
-new UI(snake)
+
 
 engine.addSystem(snake)

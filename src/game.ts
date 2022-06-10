@@ -69,6 +69,7 @@ createWall(64, 0, 32, 1)
 
 
 // Apple
+let score = 0
 const apple = new Entity()
 apple.addComponent(new SphereShape())
 apple.addComponent(new Transform({
@@ -86,6 +87,8 @@ apple.addComponent(
     {
         onTriggerEnter : () => {
             apple.getComponent(Transform).position = new Vector3(1 + Math.random() * 64, 1, 1 + Math.random() * 64)
+            score++
+            scoreValue.value = score.toString()
       }
     }
   )
@@ -129,15 +132,15 @@ top.sourceWidth = 77
 top.sourceHeight = 77
 top.isPointerBlocker = true
 top.onClick = new OnPointerDown(() => {
-    if(direction != 'TOP' && direction != 'BOTTOM'){
-        direction = 'TOP'
+    // if(direction != 'TOP' && direction != 'BOTTOM'){
+    //     direction = 'TOP'
         snake.removeComponent(utils.FollowPathComponent)
         let newPath = []
         newPath[0] = new Vector3(snake.getComponent(Transform).position.x, snake.getComponent(Transform).position.y, snake.getComponent(Transform).position.z)
         newPath[1] = new Vector3(snake.getComponent(Transform).position.x, snake.getComponent(Transform).position.y, 64)
         snake.addComponent(new utils.FollowPathComponent(newPath, 4))
         snake.getComponent(Transform).rotation.set(0, 1, 0, 1)
-    }
+    // }
 })
 
 const bottom = new UIImage(canvas, new Texture("images/bottom.png"))
@@ -149,15 +152,15 @@ bottom.sourceWidth = 77
 bottom.sourceHeight = 77
 bottom.isPointerBlocker = true
 bottom.onClick = new OnPointerDown(() => {
-    if(direction != 'TOP' && direction != 'BOTTOM'){
-        direction = 'BOTTOM'
+    // if(direction != 'TOP' && direction != 'BOTTOM'){
+    //     direction = 'BOTTOM'
         snake.removeComponent(utils.FollowPathComponent)
         let newPath = []
         newPath[0] = new Vector3(snake.getComponent(Transform).position.x, snake.getComponent(Transform).position.y, snake.getComponent(Transform).position.z)
         newPath[1] = new Vector3(snake.getComponent(Transform).position.x, snake.getComponent(Transform).position.y, 0)
         snake.addComponent(new utils.FollowPathComponent(newPath, 4))
         snake.getComponent(Transform).rotation.set(0, 1, 0, -1)
-    }
+    // }
 })
 
 const left = new UIImage(canvas, new Texture("images/left.png"))
@@ -169,16 +172,15 @@ left.sourceWidth = 77
 left.sourceHeight = 77
 left.isPointerBlocker = true
 left.onClick = new OnPointerDown(() => {
-    if(direction != 'LEFT' && direction != 'RIGTH'){
-        direction = 'LEFT'
+    // if(direction != 'LEFT' && direction != 'RIGTH'){
+    //     direction = 'LEFT'
         snake.removeComponent(utils.FollowPathComponent)
         let newPath = []
         newPath[0] = new Vector3(snake.getComponent(Transform).position.x, snake.getComponent(Transform).position.y, snake.getComponent(Transform).position.z)
         newPath[1] = new Vector3(0, snake.getComponent(Transform).position.y, snake.getComponent(Transform).position.z)
         snake.addComponent(new utils.FollowPathComponent(newPath, 4))
         snake.getComponent(Transform).rotation.set(0, 0, 0, 1)
-    }
-    
+    // }    
 })
 
 const rigth = new UIImage(canvas, new Texture("images/rigth.png"))
@@ -190,15 +192,15 @@ rigth.sourceWidth = 77
 rigth.sourceHeight = 77
 rigth.isPointerBlocker = true
 rigth.onClick = new OnPointerDown(() => {
-    if(direction != 'LEFT' && direction != 'RIGTH'){
-        direction = 'RIGTH'
+    // if(direction != 'LEFT' && direction != 'RIGTH'){
+    //     direction = 'RIGTH'
         snake.removeComponent(utils.FollowPathComponent)
         let newPath = []
         newPath[0] = new Vector3(snake.getComponent(Transform).position.x, snake.getComponent(Transform).position.y, snake.getComponent(Transform).position.z)
         newPath[1] = new Vector3(64, snake.getComponent(Transform).position.y, snake.getComponent(Transform).position.z)
         snake.addComponent(new utils.FollowPathComponent(newPath, 4))
         snake.getComponent(Transform).rotation.set(0, 1, 0, 0)
-    }
+    // }
 })
 import { movePlayerTo } from '@decentraland/RestrictedActions'
 const start = new UIImage(canvas, new Texture("images/start.png"))
@@ -214,13 +216,22 @@ start.onClick = new OnPointerDown(() => {
 })
 
 function restartGame(){
+    score = 0
+    scoreValue.value = score.toString()
     direction = ''
     snake.getComponent(Transform).position.set(16, 1, 16)
+    snake.getComponent(Transform).rotation.set(0, 1, 0, 1)
     movePlayerTo({ x: 14, y: 0, z: 12 }, { x: 16, y: 0, z: 16 })
 }
 
-// const message = new UIText(canvas)
-// message.value = snake.getComponent(Transform).position.x.toString()
-// message.fontSize = 15
-// message.vAlign = "bottom"
-// message.positionX = 0
+const scoreText = new UIText(canvas)
+scoreText.fontSize = 15
+scoreText.vAlign = "bottom"
+scoreText.positionX = -260
+scoreText.value = 'Score:'
+
+const scoreValue = new UIText(canvas)
+scoreValue.fontSize = 15
+scoreValue.vAlign = "bottom"
+scoreValue.positionX = -200
+scoreValue.value = score.toString()

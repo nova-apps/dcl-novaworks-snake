@@ -1,4 +1,5 @@
 import { Snake } from "./Snake";
+import * as utils from '@dcl/ecs-scene-utils'
 
 export class Node extends Entity{
     public id : number = 0;
@@ -36,8 +37,25 @@ export class Head extends Node{
         this.snake = snake
     }
 
-    public forward(){}
-    public turn(){}
+    public forward(){
+        let newPath = []
+        newPath[0] = new Vector3(
+            this.getComponent(Transform).position.x,
+            this.getComponent(Transform).position.y,
+            this.getComponent(Transform).position.z
+        )
+        newPath[1] = new Vector3(
+            this.getComponent(Transform).position.x,
+            this.getComponent(Transform).position.y,
+            64
+        )
+        this.addComponent(new utils.FollowPathComponent(newPath, 4))
+        this.getComponent(Transform).rotation.set(0, 0, 0, 1)
+    }
+
+    public turnRigth(){
+        
+    }
 
     /* Head hits Wall or own Body */ 
     public hit(){

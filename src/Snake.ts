@@ -4,8 +4,12 @@ export class Snake implements ISystem{
 
     public head: Head = new Head(this) // So we can access to the snake from the head
     public body: any = []
+    
 
     constructor(){
+        const canvas = new UICanvas()
+        this.move()
+        
         this.born()
         this.addSegment(this.head, 0.5) // segmento 0 aka cuello
 
@@ -13,6 +17,21 @@ export class Snake implements ISystem{
         for (var i = 0; i < 2; i++) {
             this.addSegment(this.body[i], 0.5 - i * 0.1) // resto de los segmentos
         }
+    }
+
+    public move(){
+      let canvas = new UICanvas()
+      const top = new UIImage(canvas, new Texture("images/top.png"))
+      top.positionY = -250
+      top.positionX = 150
+      top.width = "35px"
+      top.height = "35px"
+      top.sourceWidth = 77
+      top.sourceHeight = 77
+      top.isPointerBlocker = true
+      top.onClick = new OnClick(() => {
+        this.head.forward()
+      })
     }
 
     /* Inits the snake */

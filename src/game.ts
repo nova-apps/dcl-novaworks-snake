@@ -3,6 +3,8 @@ import * as utils from '@dcl/ecs-scene-utils'
 const floor = new Entity()
 floor.addComponent(new PlaneShape())
 
+import { Snake } from './Snake'
+engine.addSystem(new Snake())
 
 const cube = new Entity() 
 cube.addComponent(new SphereShape())
@@ -15,36 +17,13 @@ cube.addComponent(new Transform({
 let material = new Material()
 material.albedoColor = new Color4(0, 1, 0, 1)
 
-let path = []
-path[0] = new Vector3(1, 1, 1)
-path[1] = new Vector3(1, 1, 64)
-cube.addComponent(new utils.FollowPathComponent(path, 10))
-let direction = 'TOP'
-
 cube.addComponent(material)
 engine.addEntity(cube)
 
+let direction = ''
 const canvas = new UICanvas()
 
-const top = new UIImage(canvas, new Texture("images/top.png"))
-top.positionY = -250
-top.positionX = 150
-top.width = "35px"
-top.height = "35px"
-top.sourceWidth = 77
-top.sourceHeight = 77
-top.isPointerBlocker = true
-top.onClick = new OnClick(() => {
-    if(direction != 'TOP' && direction != 'BOTTOM'){
-        direction = 'TOP'
-        cube.removeComponent(utils.FollowPathComponent)
-        let newPath = []
-        newPath[0] = new Vector3(cube.getComponent(Transform).position.x, cube.getComponent(Transform).position.y, cube.getComponent(Transform).position.z)
-        newPath[1] = new Vector3(cube.getComponent(Transform).position.x, cube.getComponent(Transform).position.y, 64)
-        cube.addComponent(new utils.FollowPathComponent(newPath, 4))
-        cube.getComponent(Transform).rotation.set(0, 0, 0, 1)
-    }
-})
+
 
 const bottom = new UIImage(canvas, new Texture("images/bottom.png"))
 bottom.positionY = -300
@@ -106,3 +85,4 @@ rigth.onClick = new OnClick(() => {
         cube.getComponent(Transform).rotation.set(0, 1, 0, 1)
     }
 })
+

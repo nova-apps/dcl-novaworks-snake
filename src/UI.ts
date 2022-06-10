@@ -1,4 +1,5 @@
 import { movePlayerTo } from '@decentraland/RestrictedActions'
+const input = Input.instance
 
 import { Snake } from './Snake'
 
@@ -9,6 +10,7 @@ export class UI {
     constructor(public snake: Snake){
         this.snake = snake
         this.addControls()
+        this.shiftControls()
 
         // const start = new UIImage(this.canvas, new Texture("images/start.png"))
         // start.positionY = -290
@@ -40,6 +42,42 @@ export class UI {
         this.scoreValue.fontSize = 15
         this.scoreValue.vAlign = "bottom"
         this.scoreValue.positionX = -200
+    }
+
+    public shiftControls(){
+        let toggle = false
+
+        input.subscribe("BUTTON_DOWN", ActionButton.WALK, false, (e) => {
+            toggle = true
+        })
+
+        input.subscribe("BUTTON_UP", ActionButton.WALK, false, (e) => {
+            toggle = false
+        })
+
+        input.subscribe("BUTTON_DOWN", ActionButton.FORWARD, false, (e) => {
+            if(toggle){
+                this.snake.head.forward()
+            }
+        })
+
+        input.subscribe("BUTTON_DOWN", ActionButton.BACKWARD, false, (e) => {
+            if(toggle){
+                this.snake.head.backward()
+            }
+        })
+
+        input.subscribe("BUTTON_DOWN", ActionButton.LEFT, false, (e) => {
+            if(toggle){
+                this.snake.head.turnLeft()
+            }
+        })
+
+        input.subscribe("BUTTON_DOWN", ActionButton.RIGHT, false, (e) => {
+            if(toggle){
+                this.snake.head.turnRigth()
+            }
+        })
     }
 
     public addControls(){

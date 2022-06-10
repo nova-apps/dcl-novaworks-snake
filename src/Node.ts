@@ -16,7 +16,7 @@ export class Node extends Entity{
         this.addComponent(new SphereShape)
         this.addComponent(
               new Transform({
-                    scale: new Vector3(size,size,size),
+                    scale: new Vector3(0.7, 0.3, 0.9),
                     position: position
               })
         )

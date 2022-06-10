@@ -66,23 +66,23 @@ left.onClick = new OnClick(() => {
     
 })
 
-const rigth = new UIImage(canvas, new Texture("images/rigth.png"))
-rigth.positionY = -300
-rigth.positionX = 200
-rigth.width = "35px"
-rigth.height = "35px"
-rigth.sourceWidth = 77
-rigth.sourceHeight = 77
-rigth.isPointerBlocker = true
-rigth.onClick = new OnClick(() => {
-    if(direction != 'LEFT' && direction != 'RIGTH'){
-        direction = 'RIGTH'
-        cube.removeComponent(utils.FollowPathComponent)
-        let newPath = []
-        newPath[0] = new Vector3(cube.getComponent(Transform).position.x, cube.getComponent(Transform).position.y, cube.getComponent(Transform).position.z)
-        newPath[1] = new Vector3(64, cube.getComponent(Transform).position.y, cube.getComponent(Transform).position.z)
-        cube.addComponent(new utils.FollowPathComponent(newPath, 4))
-        cube.getComponent(Transform).rotation.set(0, 1, 0, 1)
-    }
-})
+// const rigth = new UIImage(canvas, new Texture("images/rigth.png"))
+// rigth.positionY = -300
+// rigth.positionX = 200
+// rigth.width = "35px"
+// rigth.height = "35px"
+// rigth.sourceWidth = 77
+// rigth.sourceHeight = 77
+// rigth.isPointerBlocker = true
+// rigth.onClick = new OnClick(() => {
+//     if(direction != 'LEFT' && direction != 'RIGTH'){
+//         direction = 'RIGTH'
+//         cube.removeComponent(utils.FollowPathComponent)
+//         let newPath = []
+//         newPath[0] = new Vector3(cube.getComponent(Transform).position.x, cube.getComponent(Transform).position.y, cube.getComponent(Transform).position.z)
+//         newPath[1] = new Vector3(64, cube.getComponent(Transform).position.y, cube.getComponent(Transform).position.z)
+//         cube.addComponent(new utils.FollowPathComponent(newPath, 4))
+//         cube.getComponent(Transform).rotation.set(0, 1, 0, 1)
+//     }
+// })
 

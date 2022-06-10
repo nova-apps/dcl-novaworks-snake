@@ -39,6 +39,7 @@ export class Head extends Node{
     }
 
     public forward(){
+        this.removeComponent(utils.FollowPathComponent)
         let newPath = []
         newPath[0] = new Vector3(
             this.getComponent(Transform).position.x,
@@ -54,7 +55,14 @@ export class Head extends Node{
         this.getComponent(Transform).rotation.set(0, 0, 0, 1)
     }
 
-    public turnRigth(){}
+    public turnRigth(){
+        this.removeComponent(utils.FollowPathComponent)
+        let newPath = []
+        newPath[0] = new Vector3(this.getComponent(Transform).position.x, this.getComponent(Transform).position.y, this.getComponent(Transform).position.z)
+        newPath[1] = new Vector3(64, this.getComponent(Transform).position.y, this.getComponent(Transform).position.z)
+        this.addComponent(new utils.FollowPathComponent(newPath, 4))
+        this.getComponent(Transform).rotation.set(0, 1, 0, 1)
+    }
 
     /* Head hits Wall or own Body */ 
     public hit(){

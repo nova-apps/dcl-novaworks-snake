@@ -13,11 +13,30 @@ export class Snake implements ISystem{
         for (var i = 0; i < 2; i++) {
             this.addSegment(this.body[i], 0.5 - i * 0.1) // resto de los segmentos
         }
-        this.move()
-    }
 
-    public move(){
-      this.head.forward()
+        const top = new UIImage(canvas, new Texture("images/top.png"))
+        top.positionY = -250
+        top.positionX = 250
+        top.width = "35px"
+        top.height = "35px"
+        top.sourceWidth = 77
+        top.sourceHeight = 77
+        top.isPointerBlocker = true
+        top.onClick = new OnPointerDown(() => {
+          this.head.forward()
+        })
+
+        const rigth = new UIImage(canvas, new Texture("images/rigth.png"))
+        rigth.positionY = -300
+        rigth.positionX = 200
+        rigth.width = "35px"
+        rigth.height = "35px"
+        rigth.sourceWidth = 77
+        rigth.sourceHeight = 77
+        rigth.isPointerBlocker = true
+        rigth.onClick = new OnClick(() => {
+          this.head.turnRigth()
+        })
     }
 
     /* Inits the snake */

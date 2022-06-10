@@ -2,11 +2,29 @@ import { Snake } from "./Snake";
 
 export class Node extends Entity{
     public id : number = 0;
-    //public transform = this.getComponent(Transform);
+    public transform : Transform
+    public position: Vector3 = new Vector3(1,1,1)
     constructor(){
         super();
+        // this.transform = this.getComponent(Transform);
     }
     public dies(){}
+
+    public place(
+        position: Vector3,
+        size : number = 0.5
+      ){
+          this.position = position
+          this.addComponent(new SphereShape)
+          this.addComponent(
+              new Transform({
+                  scale: new Vector3(size,size,size),
+                  position: position
+              })
+          )
+          this.transform = this.getComponent(Transform)
+          engine.addEntity(this)
+      }
 }
 
 export class Head extends Node{
@@ -19,7 +37,6 @@ export class Head extends Node{
     }
 
     public forward(){}
-    
     public turn(){}
 
     /* Head hits Wall or own Body */ 
@@ -48,26 +65,23 @@ export class Segment extends Node{
         Segment.quantity++
     }
 
-    //public follow( fraction : number ){
-    // public follow(){
-    //     this.transform.position = Vector3.Lerp(
-    //        this.transform.position,
-    //        this.prevNode.transform.position,
-    //        this.spacing
-    //     )
-    // }
+    public follow(){
+        this.transform.position = Vector3.Lerp(
+           this.transform.position,
+           this.prevNode.transform.position,
+           this.spacing
+        )
+    }
 
-    // /** Imitate rotatation */
-    // //public rotate(fraction:number){
-    // public rotate(){
-    //     let originalRot = this.transform.rotation.eulerAngles
-    //     let targetRot = this.prevNode.transform.rotation.eulerAngles
-    //     let slerpRot = Quaternion.Slerp(
-    //         Quaternion.Euler(originalRot.x,originalRot.y,originalRot.z),
-    //         Quaternion.Euler(targetRot.x,targetRot.y,targetRot.z), 
-    //         this.spacing
-    //     )
-    //     this.transform.rotation = slerpRot
-    //     //fraction += dt / 5
-    // }
+    /** Imitate rotatation */
+    public rotate(){
+        let originalRot = this.transform.rotation.eulerAngles
+        let targetRot = this.prevNode.transform.rotation.eulerAngles
+        let slerpRot = Quaternion.Slerp(
+            Quaternion.Euler(originalRot.x,originalRot.y,originalRot.z),
+            Quaternion.Euler(targetRot.x,targetRot.y,targetRot.z), 
+            this.spacing
+        )
+        this.transform.rotation = slerpRot
+    }
 }

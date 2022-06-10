@@ -92,16 +92,16 @@ export class Segment extends Node{
         )
     }
 
-    // /** Imitate rotatation */
-    // public rotate(){
-    //     let originalRot = this.transform.rotation.eulerAngles
-    //     let targetRot = this.prevNode.transform.rotation.eulerAngles
-    //     let slerpRot = Quaternion.Slerp(
-    //         Quaternion.Euler(originalRot.x,originalRot.y,originalRot.z),
-    //         Quaternion.Euler(targetRot.x,targetRot.y,targetRot.z), 
-    //         this.spacing
-    //     )
-    //     this.transform.rotation = slerpRot
-    // }
+    /** Imitate rotatation */
+    public rotate(){
+        let originalRot = this.getComponent(Transform).rotation.eulerAngles
+        let targetRot = this.prevNode.getComponent(Transform).rotation.eulerAngles
+        let slerpRot = Quaternion.Slerp(
+            Quaternion.Euler(originalRot.x,originalRot.y,originalRot.z),
+            Quaternion.Euler(targetRot.x,targetRot.y,targetRot.z), 
+            this.spacing // revisar este 
+        )
+        this.transform.rotation = slerpRot
+    }
 
 }

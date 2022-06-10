@@ -29,6 +29,9 @@ roof.addComponent(roofMaterial)
 
 engine.addEntity(roof)
 
+let wallMaterial = new Material()
+wallMaterial.albedoColor = new Color4(0, 0, 0, 0.8)
+
 function createWall(x: number, y: number, z: number, rotation: number){
     const wall = new Entity()
     let wallShape = new PlaneShape()
@@ -39,9 +42,6 @@ function createWall(x: number, y: number, z: number, rotation: number){
         rotation: new Quaternion(0, 1, 0, rotation),
         scale: new Vector3(64, 15, 64)
     }))
-
-    let wallMaterial = new Material()
-    wallMaterial.albedoColor = new Color4(0, 0, 0, 0.8)
     wall.addComponent(wallMaterial)
     
     let wallTrigger = new utils.TriggerBoxShape()
@@ -52,7 +52,8 @@ function createWall(x: number, y: number, z: number, rotation: number){
         wallTrigger,
           {
               onTriggerEnter : () => {
-                  log('wall!')
+                // log('wall')
+                // endGame()
             },
             // enableDebug: true
           }
@@ -209,10 +210,14 @@ start.sourceWidth = 300
 start.sourceHeight = 86
 start.isPointerBlocker = true
 start.onClick = new OnPointerDown(() => {
-        snake.getComponent(Transform).position.set(16, 1, 16)
-        movePlayerTo({ x: 14, y: 0, z: 12 }, { x: 16, y: 0, z: 16 })
+    restartGame()
 })
 
+function restartGame(){
+    direction = ''
+    snake.getComponent(Transform).position.set(16, 1, 16)
+    movePlayerTo({ x: 14, y: 0, z: 12 }, { x: 16, y: 0, z: 16 })
+}
 
 // const message = new UIText(canvas)
 // message.value = snake.getComponent(Transform).position.x.toString()

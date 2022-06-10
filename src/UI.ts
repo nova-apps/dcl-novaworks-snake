@@ -12,27 +12,6 @@ export class UI {
         this.addControls()
         this.shiftControls()
 
-        // const start = new UIImage(this.canvas, new Texture("images/start.png"))
-        // start.positionY = -290
-        // start.positionX = -450
-        // start.width = "150px"
-        // start.height = "43px"
-        // start.sourceWidth = 300
-        // start.sourceHeight = 86
-        // start.isPointerBlocker = true
-        // start.onClick = new OnPointerDown(() => {
-        //     // restartGame()
-        // })
-
-        // function restartGame(){
-        //     // score = 0
-        //     // scoreValue.value = score.toString()
-        //     // // direction = ''
-        //     // snake.getComponent(Transform).position.set(16, 1, 16)
-        //     // snake.getComponent(Transform).rotation.set(0, 1, 0, 1)
-        //     // movePlayerTo({ x: 14, y: 0, z: 12 }, { x: 16, y: 0, z: 16 })
-        // }
-
         // const scoreText = new UIText(this.canvas)
         // scoreText.fontSize = 15
         // scoreText.vAlign = "bottom"

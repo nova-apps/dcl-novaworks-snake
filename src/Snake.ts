@@ -4,8 +4,6 @@ export class Snake implements ISystem{
 
     public head: Head = new Head(this) // So we can access to the snake from the head
     public body: any = []
-    public transform: Transform
-    
 
     constructor(){
         const canvas = new UICanvas()
@@ -61,14 +59,13 @@ export class Snake implements ISystem{
     public reborn(){}
 
     update(dt: number) {
+
+      // let spacing = 0.1
       // let distance = Math.floor( Vector3.Distance(this.path.origin, this.path.target) )
       // let speed = Math.floor( distance * spacing )
-      this.transform = this.head.getComponent(Transform)
-      //this.path = this.tail.entity.getComponent(PathData)
-      let spacing = 0.1
 
       for (let segment of this.body) {
-        segment.follow(spacing)
+        segment.follow()
         //segment.rotate()
       };
     }

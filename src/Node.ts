@@ -7,30 +7,30 @@ export class Node extends Entity{
     public position: Vector3 = new Vector3(1,1,1)
     constructor(){
         super();
-        // this.transform = this.getComponent(Transform);
     }
+
     public dies(){}
 
     public place(
         position: Vector3,
         size : number = 0.5
-      ){
-          this.position = position
-          this.addComponent(new SphereShape)
-          this.addComponent(
-                new Transform({
+    ){
+        this.position = position
+        this.addComponent(new SphereShape)
+        this.addComponent(
+              new Transform({
                     scale: new Vector3(size,size,size),
                     position: position
-                })
-          )
-          this.transform = this.getComponent(Transform)
-          engine.addEntity(this)
+              })
+        )
+        this.transform = this.getComponent(Transform)
+        engine.addEntity(this)
       }
 }
 
 export class Head extends Node{
     public speed : number = 1
-    public name?: string = 'head'
+    public name? : string = 'head'
     constructor(
         public snake : Snake
     ){
@@ -54,13 +54,11 @@ export class Head extends Node{
         this.getComponent(Transform).rotation.set(0, 0, 0, 1)
     }
 
-    public turnRigth(){
-        
-    }
+    public turnRigth(){}
 
     /* Head hits Wall or own Body */ 
     public hit(){
-        //this.snake.die()
+        // this.snake.die()
     }
 
     public eatsApple(){
@@ -84,14 +82,13 @@ export class Segment extends Node{
         Segment.quantity++
     }
 
-    public follow(fraction : number){
-        log(this.prevNode) 
+    public follow(){
         let originalPos = this.getComponent(Transform).position
         let targetPos = this.prevNode.getComponent(Transform).position
         this.transform.position = Vector3.Lerp(
            originalPos,
            targetPos,
-           fraction
+           this.spacing
         )
     }
 
@@ -106,4 +103,5 @@ export class Segment extends Node{
     //     )
     //     this.transform.rotation = slerpRot
     // }
+
 }

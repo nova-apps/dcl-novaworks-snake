@@ -32,7 +32,7 @@ engine.addEntity(roof)
 function createWall(x: number, y: number, z: number, rotation: number){
     const wall = new Entity()
     let wallShape = new PlaneShape()
-    wallShape.withCollisions = true
+    wallShape.withCollisions = false
     wall.addComponent(wallShape)
     wall.addComponent(new Transform({
         position: new Vector3(x, y, z),

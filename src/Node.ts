@@ -17,10 +17,10 @@ export class Node extends Entity{
           this.position = position
           this.addComponent(new SphereShape)
           this.addComponent(
-              new Transform({
-                  scale: new Vector3(size,size,size),
-                  position: position
-              })
+                new Transform({
+                    scale: new Vector3(size,size,size),
+                    position: position
+                })
           )
           this.transform = this.getComponent(Transform)
           engine.addEntity(this)

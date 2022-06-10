@@ -7,8 +7,9 @@ export class Snake implements ISystem{
 
     constructor(){
         this.born()
+        this.addSegment(this.head, 0.5) // segmento 0 aka cuello
+
         // TODO, take this out of here, its have to be trigered when the head eats an applle
-        this.addSegment(this.head, 0.6) // segmento 0 aka cuello
         for (var i = 0; i < 2; i++) {
             this.addSegment(this.body[i], 0.5 - i * 0.1) // resto de los segmentos
         }

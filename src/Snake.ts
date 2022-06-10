@@ -1,4 +1,7 @@
-import { Node, Head, Segment} from "./Node";
+import { Node} from "./Node";
+import { Head } from "./Head";
+import { Segment } from "./Segment";
+
 import * as utils from '@dcl/ecs-scene-utils'
 
 export class Snake implements ISystem{

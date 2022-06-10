@@ -1,5 +1,5 @@
 import * as utils from '@dcl/ecs-scene-utils'
-import { Segment } from './Node';
+import { Segment } from './Segment';
 import { Snake } from './Snake';
 
 export class Apple extends Entity {

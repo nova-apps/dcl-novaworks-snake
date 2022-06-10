@@ -1,19 +1,71 @@
 import { movePlayerTo } from '@decentraland/RestrictedActions'
 
+import { Snake } from './Snake'
+
 export class UI {
-    constructor(){
+    constructor(public snake: Snake){
+        this.snake = snake
         const canvas = new UICanvas()
-        const start = new UIImage(canvas, new Texture("images/start.png"))
-        start.positionY = -290
-        start.positionX = -450
-        start.width = "150px"
-        start.height = "43px"
-        start.sourceWidth = 300
-        start.sourceHeight = 86
-        start.isPointerBlocker = true
-        start.onClick = new OnPointerDown(() => {
-            // restartGame()
+
+        const top = new UIImage(canvas, new Texture("images/top.png"))
+        top.positionY = -250
+        top.positionX = 250
+        top.width = "35px"
+        top.height = "35px"
+        top.sourceWidth = 77
+        top.sourceHeight = 77
+        top.isPointerBlocker = true
+        top.onClick = new OnPointerDown(() => {
+          snake.head.forward()
         })
+
+        const rigth = new UIImage(canvas, new Texture("images/rigth.png"))
+        rigth.positionY = -300
+        rigth.positionX = 300
+        rigth.width = "35px"
+        rigth.height = "35px"
+        rigth.sourceWidth = 77
+        rigth.sourceHeight = 77
+        rigth.isPointerBlocker = true
+        rigth.onClick = new OnPointerDown(() => {
+            snake.head.turnRigth()  
+        })
+
+        const bottom = new UIImage(canvas, new Texture("images/bottom.png"))
+        bottom.positionY = -300
+        bottom.positionX = 250
+        bottom.width = "35px"
+        bottom.height = "35px"
+        bottom.sourceWidth = 77
+        bottom.sourceHeight = 77
+        bottom.isPointerBlocker = true
+        bottom.onClick = new OnPointerDown(() => {
+            snake.head.backward()
+        })
+
+        const left = new UIImage(canvas, new Texture("images/left.png"))
+        left.positionY = -300
+        left.positionX = 200
+        left.width = "35px"
+        left.height = "35px"
+        left.sourceWidth = 77
+        left.sourceHeight = 77
+        left.isPointerBlocker = true
+        left.onClick = new OnPointerDown(() => {
+            snake.head.turnLeft()
+        })
+        
+        // const start = new UIImage(canvas, new Texture("images/start.png"))
+        // start.positionY = -290
+        // start.positionX = -450
+        // start.width = "150px"
+        // start.height = "43px"
+        // start.sourceWidth = 300
+        // start.sourceHeight = 86
+        // start.isPointerBlocker = true
+        // start.onClick = new OnPointerDown(() => {
+        //     // restartGame()
+        // })
 
         // function restartGame(){
         //     score = 0
@@ -24,16 +76,16 @@ export class UI {
         //     movePlayerTo({ x: 14, y: 0, z: 12 }, { x: 16, y: 0, z: 16 })
         // }
 
-        const scoreText = new UIText(canvas)
-        scoreText.fontSize = 15
-        scoreText.vAlign = "bottom"
-        scoreText.positionX = -260
-        scoreText.value = 'Score:'
+        // const scoreText = new UIText(canvas)
+        // scoreText.fontSize = 15
+        // scoreText.vAlign = "bottom"
+        // scoreText.positionX = -260
+        // scoreText.value = 'Score:'
 
-        const scoreValue = new UIText(canvas)
-        scoreValue.fontSize = 15
-        scoreValue.vAlign = "bottom"
-        scoreValue.positionX = -200
+        // const scoreValue = new UIText(canvas)
+        // scoreValue.fontSize = 15
+        // scoreValue.vAlign = "bottom"
+        // scoreValue.positionX = -200
         // scoreValue.value = score.toString()
     }
 }

@@ -6,6 +6,6 @@ import { UI } from './UI'
 let snake = new Snake()
 new Apple(snake)
 new Enviorment()
-new UI()
+new UI(snake)
 
 engine.addSystem(snake)

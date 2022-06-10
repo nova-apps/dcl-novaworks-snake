@@ -5,7 +5,6 @@ import { Snake } from './Snake';
 export class Apple extends Entity {
     constructor(public snake: Snake){
         super()
-
         this.snake = snake
         let score = 0
         this.addComponent(new SphereShape())

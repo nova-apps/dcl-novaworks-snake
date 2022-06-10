@@ -29,7 +29,8 @@ export class Node extends Entity{
 }
 
 export class Head extends Node{
-    public speed : number = 1;
+    public speed : number = 1
+    public name?: string = 'head'
     constructor(
         public snake : Snake
     ){
@@ -83,23 +84,26 @@ export class Segment extends Node{
         Segment.quantity++
     }
 
-    public follow(){
+    public follow(fraction : number){
+        log(this.prevNode) 
+        let originalPos = this.getComponent(Transform).position
+        let targetPos = this.prevNode.getComponent(Transform).position
         this.transform.position = Vector3.Lerp(
-           this.transform.position,
-           this.prevNode.transform.position,
-           this.spacing
+           originalPos,
+           targetPos,
+           fraction
         )
     }
 
-    /** Imitate rotatation */
-    public rotate(){
-        let originalRot = this.transform.rotation.eulerAngles
-        let targetRot = this.prevNode.transform.rotation.eulerAngles
-        let slerpRot = Quaternion.Slerp(
-            Quaternion.Euler(originalRot.x,originalRot.y,originalRot.z),
-            Quaternion.Euler(targetRot.x,targetRot.y,targetRot.z), 
-            this.spacing
-        )
-        this.transform.rotation = slerpRot
-    }
+    // /** Imitate rotatation */
+    // public rotate(){
+    //     let originalRot = this.transform.rotation.eulerAngles
+    //     let targetRot = this.prevNode.transform.rotation.eulerAngles
+    //     let slerpRot = Quaternion.Slerp(
+    //         Quaternion.Euler(originalRot.x,originalRot.y,originalRot.z),
+    //         Quaternion.Euler(targetRot.x,targetRot.y,targetRot.z), 
+    //         this.spacing
+    //     )
+    //     this.transform.rotation = slerpRot
+    // }
 }

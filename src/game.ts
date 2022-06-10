@@ -1,5 +1,13 @@
 import * as utils from '@dcl/ecs-scene-utils'
 
+import { Snake } from './Snake'
+import { Apple } from './Apple'
+
+let snake = new Snake()
+engine.addSystem(snake)
+
+let apple = new Apple(snake)
+
 // Enviorment
 const floor = new Entity()
 floor.addComponent(new PlaneShape())
@@ -68,170 +76,37 @@ createWall(0, 0, 32, 1)
 createWall(64, 0, 32, 1)
 
 
-// Apple
-let score = 0
-const apple = new Entity()
-apple.addComponent(new SphereShape())
-apple.addComponent(new Transform({
-    // position: new Vector3(16, 1, 30),
-    scale: new Vector3(0.5, 0.5, 0.5)
-}))
 
-let appleMaterial  = new Material()
-appleMaterial.albedoColor = new Color4(1, 0, 0, 1)
-apple.addComponent(appleMaterial)
+// import { movePlayerTo } from '@decentraland/RestrictedActions'
+// const start = new UIImage(canvas, new Texture("images/start.png"))
+// start.positionY = -290
+// start.positionX = -450
+// start.width = "150px"
+// start.height = "43px"
+// start.sourceWidth = 300
+// start.sourceHeight = 86
+// start.isPointerBlocker = true
+// start.onClick = new OnPointerDown(() => {
+//     restartGame()
+// })
 
-apple.addComponent(
-  new utils.TriggerComponent(
-    new utils.TriggerSphereShape(),
-    {
-        onTriggerEnter : () => {
-            apple.getComponent(Transform).position = new Vector3(1 + Math.random() * 64, 1, 1 + Math.random() * 64)
-            score++
-            scoreValue.value = score.toString()
-      }
-    }
-  )
-)
+// function restartGame(){
+//     score = 0
+//     scoreValue.value = score.toString()
+//     // direction = ''
+//     snake.getComponent(Transform).position.set(16, 1, 16)
+//     snake.getComponent(Transform).rotation.set(0, 1, 0, 1)
+//     movePlayerTo({ x: 14, y: 0, z: 12 }, { x: 16, y: 0, z: 16 })
+// }
 
-engine.addEntity(apple)
+// const scoreText = new UIText(canvas)
+// scoreText.fontSize = 15
+// scoreText.vAlign = "bottom"
+// scoreText.positionX = -260
+// scoreText.value = 'Score:'
 
-// Snake
-const snake = new Entity() 
-snake.addComponent(new SphereShape()).withCollisions = true
-snake.addComponent(new Transform({ 
-        position: new Vector3(16, 1, 16),
-        scale: new Vector3(1, 0.4, 0.7),
-        rotation: new Quaternion(0, 1, 0, 1)
-}))
-
-snake.addComponent(
-    new utils.TriggerComponent(new utils.TriggerSphereShape())
-  )
-
-let snakeMaterial = new Material()
-// snakeMaterial.albedoColor = new Color4(0, 1, 0, 1)
-const snakeTexture = new Texture("images/Snake.png")
-snakeMaterial.albedoTexture = snakeTexture
-
-snake.addComponent(snakeMaterial)
-engine.addEntity(snake)
-
-
-
-// Controls
-let direction = ''
-
-const canvas = new UICanvas()
-const top = new UIImage(canvas, new Texture("images/top.png"))
-top.positionY = -250
-top.positionX = 250
-top.width = "35px"
-top.height = "35px"
-top.sourceWidth = 77
-top.sourceHeight = 77
-top.isPointerBlocker = true
-top.onClick = new OnPointerDown(() => {
-    // if(direction != 'TOP' && direction != 'BOTTOM'){
-    //     direction = 'TOP'
-        snake.removeComponent(utils.FollowPathComponent)
-        let newPath = []
-        newPath[0] = new Vector3(snake.getComponent(Transform).position.x, snake.getComponent(Transform).position.y, snake.getComponent(Transform).position.z)
-        newPath[1] = new Vector3(snake.getComponent(Transform).position.x, snake.getComponent(Transform).position.y, 64)
-        snake.addComponent(new utils.FollowPathComponent(newPath, 4))
-        snake.getComponent(Transform).rotation.set(0, 1, 0, 1)
-    // }
-})
-
-const bottom = new UIImage(canvas, new Texture("images/bottom.png"))
-bottom.positionY = -300
-bottom.positionX = 250
-bottom.width = "35px"
-bottom.height = "35px"
-bottom.sourceWidth = 77
-bottom.sourceHeight = 77
-bottom.isPointerBlocker = true
-bottom.onClick = new OnPointerDown(() => {
-    // if(direction != 'TOP' && direction != 'BOTTOM'){
-    //     direction = 'BOTTOM'
-        snake.removeComponent(utils.FollowPathComponent)
-        let newPath = []
-        newPath[0] = new Vector3(snake.getComponent(Transform).position.x, snake.getComponent(Transform).position.y, snake.getComponent(Transform).position.z)
-        newPath[1] = new Vector3(snake.getComponent(Transform).position.x, snake.getComponent(Transform).position.y, 0)
-        snake.addComponent(new utils.FollowPathComponent(newPath, 4))
-        snake.getComponent(Transform).rotation.set(0, 1, 0, -1)
-    // }
-})
-
-const left = new UIImage(canvas, new Texture("images/left.png"))
-left.positionY = -300
-left.positionX = 200
-left.width = "35px"
-left.height = "35px"
-left.sourceWidth = 77
-left.sourceHeight = 77
-left.isPointerBlocker = true
-left.onClick = new OnPointerDown(() => {
-    // if(direction != 'LEFT' && direction != 'RIGTH'){
-    //     direction = 'LEFT'
-        snake.removeComponent(utils.FollowPathComponent)
-        let newPath = []
-        newPath[0] = new Vector3(snake.getComponent(Transform).position.x, snake.getComponent(Transform).position.y, snake.getComponent(Transform).position.z)
-        newPath[1] = new Vector3(0, snake.getComponent(Transform).position.y, snake.getComponent(Transform).position.z)
-        snake.addComponent(new utils.FollowPathComponent(newPath, 4))
-        snake.getComponent(Transform).rotation.set(0, 0, 0, 1)
-    // }    
-})
-
-const rigth = new UIImage(canvas, new Texture("images/rigth.png"))
-rigth.positionY = -300
-rigth.positionX = 300
-rigth.width = "35px"
-rigth.height = "35px"
-rigth.sourceWidth = 77
-rigth.sourceHeight = 77
-rigth.isPointerBlocker = true
-rigth.onClick = new OnPointerDown(() => {
-    // if(direction != 'LEFT' && direction != 'RIGTH'){
-    //     direction = 'RIGTH'
-        snake.removeComponent(utils.FollowPathComponent)
-        let newPath = []
-        newPath[0] = new Vector3(snake.getComponent(Transform).position.x, snake.getComponent(Transform).position.y, snake.getComponent(Transform).position.z)
-        newPath[1] = new Vector3(64, snake.getComponent(Transform).position.y, snake.getComponent(Transform).position.z)
-        snake.addComponent(new utils.FollowPathComponent(newPath, 4))
-        snake.getComponent(Transform).rotation.set(0, 1, 0, 0)
-    // }
-})
-import { movePlayerTo } from '@decentraland/RestrictedActions'
-const start = new UIImage(canvas, new Texture("images/start.png"))
-start.positionY = -290
-start.positionX = -450
-start.width = "150px"
-start.height = "43px"
-start.sourceWidth = 300
-start.sourceHeight = 86
-start.isPointerBlocker = true
-start.onClick = new OnPointerDown(() => {
-    restartGame()
-})
-
-function restartGame(){
-    score = 0
-    scoreValue.value = score.toString()
-    direction = ''
-    snake.getComponent(Transform).position.set(16, 1, 16)
-    snake.getComponent(Transform).rotation.set(0, 1, 0, 1)
-    movePlayerTo({ x: 14, y: 0, z: 12 }, { x: 16, y: 0, z: 16 })
-}
-
-const scoreText = new UIText(canvas)
-scoreText.fontSize = 15
-scoreText.vAlign = "bottom"
-scoreText.positionX = -260
-scoreText.value = 'Score:'
-
-const scoreValue = new UIText(canvas)
-scoreValue.fontSize = 15
-scoreValue.vAlign = "bottom"
-scoreValue.positionX = -200
-scoreValue.value = score.toString()
+// const scoreValue = new UIText(canvas)
+// scoreValue.fontSize = 15
+// scoreValue.vAlign = "bottom"
+// scoreValue.positionX = -200
+// scoreValue.value = score.toString()

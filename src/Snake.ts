@@ -21,10 +21,11 @@ export class Snake implements ISystem{
     public born(
         initPos : Vector3 = new Vector3(2,1,6)
     ){
-        this.head.addComponent(new SphereShape()).withCollisions = true
+        this.head.addComponent(new GLTFShape("models/HeadSnake.glb"))
+        // this.head.addComponent(new SphereShape()).withCollisions = true
         this.head.addComponent(
           new Transform({
-            scale: new Vector3(1, 0.4, 0.7),
+            // scale: new Vector3(1, 0.4, 0.7),
             rotation: new Quaternion(0, 1, 0, 1),
             position: initPos,
           })
@@ -33,11 +34,11 @@ export class Snake implements ISystem{
           new utils.TriggerComponent(new utils.TriggerSphereShape())
         )
       
-        let snakeMaterial = new Material()
-        const snakeTexture = new Texture("images/Snake.png")
-        snakeMaterial.albedoTexture = snakeTexture
+        // let snakeMaterial = new Material()
+        // const snakeTexture = new Texture("images/Snake.png")
+        // snakeMaterial.albedoTexture = snakeTexture
 
-        this.head.addComponent(snakeMaterial)
+        // this.head.addComponent(snakeMaterial)
 
         engine.addEntity(this.head)
     }

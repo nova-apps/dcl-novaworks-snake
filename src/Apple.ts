@@ -11,14 +11,15 @@ export class Apple extends Entity {
         this.snake = snake
         this.ui = ui
         
-        this.addComponent(new SphereShape())
+        this.addComponent(new GLTFShape("models/Apple.glb"))
+        // this.addComponent(new SphereShape())
         this.addComponent(new Transform({
-            scale: new Vector3(0.5, 0.5, 0.5)
+            scale: new Vector3(1.5, 1.5, 1.5)
         }))
 
-        let appleMaterial  = new Material()
-        appleMaterial.albedoColor = new Color4(1, 0, 0, 1)
-        this.addComponent(appleMaterial)
+        // let appleMaterial  = new Material()
+        // appleMaterial.albedoColor = new Color4(1, 0, 0, 0)
+        // this.addComponent(appleMaterial)
 
         this.addComponent(
         new utils.TriggerComponent(

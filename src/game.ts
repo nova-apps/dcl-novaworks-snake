@@ -31,13 +31,15 @@ engine.addEntity(roof)
 
 function createWall(x: number, y: number, z: number, rotation: number){
     const wall = new Entity()
-    wall.addComponent(new PlaneShape())
+    let wallShape = new PlaneShape()
+    wallShape.withCollisions = true
+    wall.addComponent(wallShape)
     wall.addComponent(new Transform({
         position: new Vector3(x, y, z),
         rotation: new Quaternion(0, 1, 0, rotation),
         scale: new Vector3(64, 15, 64)
     }))
-    
+
     let wallMaterial = new Material()
     wallMaterial.albedoColor = new Color4(0, 0, 0, 0.8)
     wall.addComponent(wallMaterial)
@@ -55,7 +57,7 @@ function createWall(x: number, y: number, z: number, rotation: number){
             // enableDebug: true
           }
         )
-      )
+    )
     engine.addEntity(wall)
 }
 
@@ -69,7 +71,7 @@ createWall(64, 0, 32, 1)
 const apple = new Entity()
 apple.addComponent(new SphereShape())
 apple.addComponent(new Transform({
-    position: new Vector3(16, 1, 30),
+    // position: new Vector3(16, 1, 30),
     scale: new Vector3(0.5, 0.5, 0.5)
 }))
 
@@ -95,8 +97,8 @@ const snake = new Entity()
 snake.addComponent(new SphereShape()).withCollisions = true
 snake.addComponent(new Transform({ 
         position: new Vector3(16, 1, 16),
-        scale: new Vector3(0.5, 0.5, 1),
-        rotation: new Quaternion(0, 0, 0, 1)
+        scale: new Vector3(1, 0.4, 0.7),
+        rotation: new Quaternion(0, 1, 0, 1)
 }))
 
 snake.addComponent(
@@ -104,21 +106,22 @@ snake.addComponent(
   )
 
 let snakeMaterial = new Material()
-snakeMaterial.albedoColor = new Color4(0, 1, 0, 1)
+// snakeMaterial.albedoColor = new Color4(0, 1, 0, 1)
+const snakeTexture = new Texture("images/Snake.png")
+snakeMaterial.albedoTexture = snakeTexture
+
 snake.addComponent(snakeMaterial)
 engine.addEntity(snake)
 
-let path = []
-path[0] = new Vector3(16, 1, 16)
-path[1] = new Vector3(1, 1, 64)
-snake.addComponent(new utils.FollowPathComponent(path, 10))
-let direction = 'TOP'
+
 
 // Controls
+let direction = ''
+
 const canvas = new UICanvas()
 const top = new UIImage(canvas, new Texture("images/top.png"))
 top.positionY = -250
-top.positionX = 150
+top.positionX = 250
 top.width = "35px"
 top.height = "35px"
 top.sourceWidth = 77
@@ -132,13 +135,13 @@ top.onClick = new OnPointerDown(() => {
         newPath[0] = new Vector3(snake.getComponent(Transform).position.x, snake.getComponent(Transform).position.y, snake.getComponent(Transform).position.z)
         newPath[1] = new Vector3(snake.getComponent(Transform).position.x, snake.getComponent(Transform).position.y, 64)
         snake.addComponent(new utils.FollowPathComponent(newPath, 4))
-        snake.getComponent(Transform).rotation.set(0, 0, 0, 1)
+        snake.getComponent(Transform).rotation.set(0, 1, 0, 1)
     }
 })
 
 const bottom = new UIImage(canvas, new Texture("images/bottom.png"))
 bottom.positionY = -300
-bottom.positionX = 150
+bottom.positionX = 250
 bottom.width = "35px"
 bottom.height = "35px"
 bottom.sourceWidth = 77
@@ -152,13 +155,13 @@ bottom.onClick = new OnPointerDown(() => {
         newPath[0] = new Vector3(snake.getComponent(Transform).position.x, snake.getComponent(Transform).position.y, snake.getComponent(Transform).position.z)
         newPath[1] = new Vector3(snake.getComponent(Transform).position.x, snake.getComponent(Transform).position.y, 0)
         snake.addComponent(new utils.FollowPathComponent(newPath, 4))
-        snake.getComponent(Transform).rotation.set(0, 0, 0, 1)
+        snake.getComponent(Transform).rotation.set(0, 1, 0, -1)
     }
 })
 
 const left = new UIImage(canvas, new Texture("images/left.png"))
 left.positionY = -300
-left.positionX = 100
+left.positionX = 200
 left.width = "35px"
 left.height = "35px"
 left.sourceWidth = 77
@@ -172,14 +175,14 @@ left.onClick = new OnPointerDown(() => {
         newPath[0] = new Vector3(snake.getComponent(Transform).position.x, snake.getComponent(Transform).position.y, snake.getComponent(Transform).position.z)
         newPath[1] = new Vector3(0, snake.getComponent(Transform).position.y, snake.getComponent(Transform).position.z)
         snake.addComponent(new utils.FollowPathComponent(newPath, 4))
-        snake.getComponent(Transform).rotation.set(0, 1, 0, 1)
+        snake.getComponent(Transform).rotation.set(0, 0, 0, 1)
     }
     
 })
 
 const rigth = new UIImage(canvas, new Texture("images/rigth.png"))
 rigth.positionY = -300
-rigth.positionX = 200
+rigth.positionX = 300
 rigth.width = "35px"
 rigth.height = "35px"
 rigth.sourceWidth = 77
@@ -193,6 +196,26 @@ rigth.onClick = new OnPointerDown(() => {
         newPath[0] = new Vector3(snake.getComponent(Transform).position.x, snake.getComponent(Transform).position.y, snake.getComponent(Transform).position.z)
         newPath[1] = new Vector3(64, snake.getComponent(Transform).position.y, snake.getComponent(Transform).position.z)
         snake.addComponent(new utils.FollowPathComponent(newPath, 4))
-        snake.getComponent(Transform).rotation.set(0, 1, 0, 1)
+        snake.getComponent(Transform).rotation.set(0, 1, 0, 0)
     }
 })
+import { movePlayerTo } from '@decentraland/RestrictedActions'
+const start = new UIImage(canvas, new Texture("images/start.png"))
+start.positionY = -290
+start.positionX = -450
+start.width = "150px"
+start.height = "43px"
+start.sourceWidth = 300
+start.sourceHeight = 86
+start.isPointerBlocker = true
+start.onClick = new OnPointerDown(() => {
+        snake.getComponent(Transform).position.set(16, 1, 16)
+        movePlayerTo({ x: 14, y: 0, z: 12 }, { x: 16, y: 0, z: 16 })
+})
+
+
+// const message = new UIText(canvas)
+// message.value = snake.getComponent(Transform).position.x.toString()
+// message.fontSize = 15
+// message.vAlign = "bottom"
+// message.positionX = 0

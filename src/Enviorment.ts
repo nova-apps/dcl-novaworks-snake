@@ -57,15 +57,21 @@ export class Enviorment {
             wall.addComponent(wallMaterial)
             
             let wallTrigger = new utils.TriggerBoxShape()
-            wallTrigger.size = new Vector3(64, 15, 1)
-        
+            
+            if(rotation == 0){
+                wallTrigger.size = new Vector3(64, 15, 1)
+            } else {
+                wallTrigger.size = new Vector3(1, 15, 64)
+            }
+            
             wall.addComponent(
                 new utils.TriggerComponent(
                 wallTrigger,
                   {
                       onTriggerEnter : () => {
-                        // log('wall')
+                        log('wall')
                     },
+                    // enableDebug: true
                   }
                 )
             )

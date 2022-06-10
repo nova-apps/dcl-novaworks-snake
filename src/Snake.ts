@@ -35,19 +35,22 @@ export class Snake implements ISystem{
         let segment = new Segment(prevNode)
         let prevNodePos = prevNode.getComponent(Transform).position
         segment.addComponent(new SphereShape())
+
         segment.addComponent(
           new Transform({
-            scale: new Vector3(scale,scale,scale), // Have to be relative to Segment.quantiy 
+            scale: new Vector3(scale,scale,scale),
             position: new Vector3(
-                prevNodePos.x, //ver en arena como era esto
+                prevNodePos.x,
                 prevNodePos.y,
-                prevNodePos.z - segment.distance //ver en arena como era esto
+                prevNodePos.z - segment.distance
             ),
           })
         )
+
         this.body.push(segment)
         engine.addEntity(segment)
     }
+
     public die(){
         this.reborn()
     }
@@ -55,15 +58,12 @@ export class Snake implements ISystem{
     public reborn(){}
 
     update(dt: number) {
-      /*
-      for (let entity of myGroup.entities) {
-        const position = entity.getComponent(Transform).position
-        //const vel = entity.getComponent(Physics).velocity
-        //position.x += vel.x
-        //position.y += vel.y
-        //position.z += vel.z
-      }
-      */
+      // let distance = Math.floor( Vector3.Distance(this.path.origin, this.path.target) )
+      // let speed = Math.floor( distance * spacing )
+      for (let segment of this.body) {
+        segment.follow()
+        segment.rotar()
+      };
     }
 
 }

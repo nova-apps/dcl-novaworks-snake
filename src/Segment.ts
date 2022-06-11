@@ -21,10 +21,12 @@ export class Segment extends Node{
             prevNodePos.y,
             prevNodePos.z - this.distance
         )
-        this.addComponent(new SphereShape)
+
+        this.addComponent(new GLTFShape("models/BodySneake.glb"))
+        // this.addComponent(new SphereShape)
         this.addComponent(
             new Transform({
-                scale: new Vector3(0.5, 0.5, 0.5),
+                // scale: new Vector3(0.5, 0.5, 0.5),
                 position: position
             })
         )

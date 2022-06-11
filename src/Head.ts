@@ -1,5 +1,4 @@
 import * as utils from '@dcl/ecs-scene-utils'
-
 import { Node } from "./Node";
 import { Snake } from "./Snake";
 

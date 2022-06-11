@@ -2,15 +2,34 @@ import { Node } from "./Node"
 
 export class Segment extends Node{
     static quantity: number = 0
+    public id : number = 0
     public distance : number = 1
     public spacing: number = 0.4
-    public id : number = 0
     constructor(
         public prevNode: Node,
     ){
         super();
         this.id = Segment.quantity
         Segment.quantity++
+        this.add()
+    }
+
+    public add(){
+        let prevNodePos = this.prevNode.getComponent(Transform).position
+        let position = new Vector3(
+            prevNodePos.x,
+            prevNodePos.y,
+            prevNodePos.z - this.distance
+        )
+        this.addComponent(new SphereShape)
+        this.addComponent(
+            new Transform({
+                scale: new Vector3(0.5, 0.5, 0.5),
+                position: position
+            })
+        )
+        this.transform = this.getComponent(Transform)
+        engine.addEntity(this)
     }
 
     public follow(){

@@ -26,7 +26,7 @@ export class Head extends Node{
             64
         )
         this.addComponent(new utils.FollowPathComponent(newPath, 4))
-        this.getComponent(Transform).rotation.set(0, 1, 0, 1)
+        this.getComponent(Transform).rotation.set(0, 1, 0, -1)
     }
 
     public turnRigth(){
@@ -43,7 +43,7 @@ export class Head extends Node{
             this.getComponent(Transform).position.z
         )
         this.addComponent(new utils.FollowPathComponent(newPath, 4))
-        this.getComponent(Transform).rotation.set(0, 1, 0, 0)
+        this.getComponent(Transform).rotation.set(0, 0, 0, 1)
     }
 
     public turnLeft(){
@@ -60,7 +60,7 @@ export class Head extends Node{
             this.getComponent(Transform).position.z
         )
         this.addComponent(new utils.FollowPathComponent(newPath, 4))
-        this.getComponent(Transform).rotation.set(0, 0, 0, -1)
+        this.getComponent(Transform).rotation.set(0, 1, 0, 0)
     }
 
     public backward(){
@@ -77,7 +77,7 @@ export class Head extends Node{
             0
         )
         this.addComponent(new utils.FollowPathComponent(newPath, 4))
-        this.getComponent(Transform).rotation.set(0, -1, 0, 1)
+        this.getComponent(Transform).rotation.set(0, 1, 0, 1)
     }
 
     /* Head hits Wall or own Body */ 

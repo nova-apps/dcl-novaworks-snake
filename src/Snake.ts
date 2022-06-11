@@ -22,7 +22,7 @@ export class Snake implements ISystem{
         this.head.addComponent(
           new Transform({
             // scale: new Vector3(1, 0.4, 0.7),
-            rotation: new Quaternion(0, 1, 0, 1),
+            rotation: new Quaternion(0, 1, 0, -1),
             position: initPos,
           })
         )

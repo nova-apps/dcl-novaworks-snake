@@ -47,10 +47,13 @@ export class Snake implements ISystem{
     }
 
     public die(){
+        log('I die')
         this.reborn()
     }
 
-    public reborn(){}
+    public reborn(){
+      
+    }
 
     update(dt: number) {
 

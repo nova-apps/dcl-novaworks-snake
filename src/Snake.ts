@@ -15,7 +15,7 @@ export class Snake implements ISystem{
 
     /* Inits the snake */
     public born(
-        initPos : Vector3 = new Vector3(2,1,6)
+        initPos : Vector3 = new Vector3(32, 1, 16)
     ){
         this.head.addComponent(new GLTFShape("models/HeadSnake.glb"))
         // this.head.addComponent(new SphereShape()).withCollisions = true

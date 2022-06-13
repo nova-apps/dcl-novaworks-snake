@@ -48,7 +48,7 @@ export class Enviorment {
 
         const wall = new Entity()
         let wallShape = new PlaneShape()
-        wallShape.withCollisions = false
+        wallShape.withCollisions = true
         wall.addComponent(wallShape)
         wall.addComponent(new Transform({
             position: new Vector3(x, y, z),

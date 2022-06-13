@@ -25,7 +25,7 @@ export class Head extends Node{
             new utils.TriggerComponent(
               new utils.TriggerBoxShape(),
                 {
-                    enableDebug : true,
+                    enableDebug : false,
                     triggeredByLayer: 1,
                     onTriggerEnter : () => {
                         this.hit()
@@ -54,7 +54,8 @@ export class Head extends Node{
                 }
             )
         )
-      
+    }
+
     public getPathTime(value: number){
         let totalTimePath = 4
         let position = value

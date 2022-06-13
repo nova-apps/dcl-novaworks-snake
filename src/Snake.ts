@@ -53,13 +53,15 @@ export class Snake implements ISystem{
 
       //Define start and end positions
       let StartPos = this.head.getComponent(Transform).position 
-      let EndPos = new Vector3(3, 1, 3)
+      let EndPos = new Vector3(32, 1, 16)
       //let randomPos : Vector3 = new Vector3(2,1,6)
       
       // Move entity
       this.head.addComponent(
-        new utils.MoveTransformComponent(StartPos, EndPos, 2)
+        new utils.MoveTransformComponent(StartPos, EndPos, 1)
       )
+
+      this.head.getComponent(Transform).rotation.set(0, 1, 0, -1)
       // Add entity to engine
       engine.addEntity(this.head)
 

@@ -14,7 +14,7 @@ export class Snake implements ISystem{
 
     /* Inits the snake */
     public born(
-        initPos : Vector3 = new Vector3(2,1,6)
+        initPos : Vector3 = new Vector3(32, 1, 16)
     ){
         this.head = new Head(this) // So we can access to the snake from the head
         this.head.addComponent(new GLTFShape("models/HeadSnake.glb"))

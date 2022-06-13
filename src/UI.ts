@@ -21,6 +21,7 @@ export class UI {
         this.scoreValue.fontSize = 15
         this.scoreValue.vAlign = "bottom"
         this.scoreValue.positionX = -300
+        this.scoreValue.value = '0'
     }
 
     public shiftControls(){
@@ -65,6 +66,12 @@ export class UI {
         instructions.positionY = -290
         instructions.positionX = 400
         instructions.value = 'Use the arrows or hold shift and use WASD to move the snake'
+
+        const data = new UIText(this.canvas)
+        data.fontSize = 10
+        data.positionY = -305
+        data.positionX = 400
+        data.value = 'Increase the draw distance to improve the game experience'
 
         const top = new UIImage(this.canvas, new Texture("images/top.png"))
         top.positionY = -250

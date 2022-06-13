@@ -17,6 +17,17 @@ export class Head extends Node{
         this.addMouth()
     }
 
+    public getPathTime(value: number){
+        let totalTimePath = 4
+        let position = value
+        let percent = position / 64
+        let percentToComplete = 1 - percent
+        let currentTimeToCompletePath = totalTimePath * percentToComplete
+        log(value)
+        log(currentTimeToCompletePath)
+        return currentTimeToCompletePath
+    }
+
     public forward(){
         if(this.direction != 'NORTH' && this.direction != 'SOUTH'){
             this.direction = 'NORTH'
@@ -32,7 +43,7 @@ export class Head extends Node{
                 this.getComponent(Transform).position.y,
                 64
             )
-            this.addComponent(new utils.FollowPathComponent(newPath, 4))
+            this.addComponent(new utils.FollowPathComponent(newPath, this.getPathTime(this.getComponent(Transform).position.z)))
             this.getComponent(Transform).rotation.set(0, 1, 0, -1)
         }
     }
@@ -52,7 +63,7 @@ export class Head extends Node{
                 this.getComponent(Transform).position.y,
                 this.getComponent(Transform).position.z
             )
-            this.addComponent(new utils.FollowPathComponent(newPath, 4))
+            this.addComponent(new utils.FollowPathComponent(newPath, this.getPathTime(this.getComponent(Transform).position.x)))
             this.getComponent(Transform).rotation.set(0, 0, 0, 1)
         }
     }
@@ -72,7 +83,7 @@ export class Head extends Node{
                 this.getComponent(Transform).position.y,
                 this.getComponent(Transform).position.z
             )
-            this.addComponent(new utils.FollowPathComponent(newPath, 4))
+            this.addComponent(new utils.FollowPathComponent(newPath, this.getPathTime(64 - this.getComponent(Transform).position.x)))
             this.getComponent(Transform).rotation.set(0, 1, 0, 0)
         }
     }
@@ -92,7 +103,7 @@ export class Head extends Node{
                 this.getComponent(Transform).position.y,
                 0
             )
-            this.addComponent(new utils.FollowPathComponent(newPath, 4))
+            this.addComponent(new utils.FollowPathComponent(newPath, this.getPathTime(64 - this.getComponent(Transform).position.z)))
             this.getComponent(Transform).rotation.set(0, 1, 0, 1)
         }
     }

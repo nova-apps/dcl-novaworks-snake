@@ -65,7 +65,14 @@ export class Enviorment {
             wallTrigger.size = new Vector3(1, 15, 64)
         }
         
-        wall.addComponent(new utils.TriggerComponent(wallTrigger))
+        wall.addComponent(
+            new utils.TriggerComponent(
+                wallTrigger,
+                {
+                    layer: 1
+                }
+            )
+        )
 
         engine.addEntity(wall)
     }

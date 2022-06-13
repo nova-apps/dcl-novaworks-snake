@@ -26,17 +26,6 @@ export class Snake implements ISystem{
             position: initPos,
           })
         )
-        
-        this.head.addComponent(
-          new utils.TriggerComponent(
-            new utils.TriggerBoxShape(),
-                {
-                    onTriggerEnter : () => {
-                      this.die()
-                    }
-                }
-            )
-        )
       
         // let snakeMaterial = new Material()
         // const snakeTexture = new Texture("images/Snake.png")

@@ -17,21 +17,14 @@ export class Snake implements ISystem{
     public born(
         initPos : Vector3 = new Vector3(2,1,6)
     ){
+        this.head = new Head(this) // So we can access to the snake from the head
         this.head.addComponent(new GLTFShape("models/HeadSnake.glb"))
-        // this.head.addComponent(new SphereShape()).withCollisions = true
         this.head.addComponent(
           new Transform({
-            // scale: new Vector3(1, 0.4, 0.7),
             rotation: new Quaternion(0, 1, 0, -1),
             position: initPos,
           })
         )
-      
-        // let snakeMaterial = new Material()
-        // const snakeTexture = new Texture("images/Snake.png")
-        // snakeMaterial.albedoTexture = snakeTexture
-        // this.head.addComponent(snakeMaterial)
-
         engine.addEntity(this.head)
     }
 
@@ -45,11 +38,24 @@ export class Snake implements ISystem{
 
     public die(){
         log('I die')
+        engine.removeEntity(this.head)
+        for(let s in this.body){
+          let segment = this.body[s]
+          engine.removeEntity(segment)
+        }
         this.reborn()
     }
 
     public reborn(){
-      
+      this.born()
+      this.addSegment(this.head) // segmento 0 aka cuello
+      let randomPos : Vector3 = new Vector3(2,1,6)
+      this.head.addComponent(
+        new Transform({
+          rotation: new Quaternion(0, 1, 0, -1),
+          position: randomPos,
+        })
+      )
     }
 
     update(dt: number) {

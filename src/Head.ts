@@ -102,6 +102,7 @@ export class Head extends Node{
             new utils.TriggerComponent(
               new utils.TriggerBoxShape(),
                 {
+                    enableDebug : true,
                     triggeredByLayer: 1,
                     onTriggerEnter : () => {
                             this.hit()

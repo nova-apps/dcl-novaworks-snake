@@ -14,24 +14,31 @@ export class Segment extends Node{
         this.add()
     }
 
+
     public add(){
         let prevNodePos = this.prevNode.getComponent(Transform).position
         let position = new Vector3(
-            prevNodePos.x,
+            prevNodePos.x - this.distance,
             prevNodePos.y,
-            prevNodePos.z - this.distance
+            prevNodePos.z
         )
 
         this.addComponent(new GLTFShape("models/BodySneake.glb"))
-        // this.addComponent(new SphereShape)
         this.addComponent(
             new Transform({
-                // scale: new Vector3(0.5, 0.5, 0.5),
                 position: position
             })
         )
         this.transform = this.getComponent(Transform)
         engine.addEntity(this)
+    }
+
+    public remove(){
+        engine.removeEntity(this)
+        if(Segment.quantity > 0){
+            Segment.quantity--
+        }
+        log(Segment.quantity)
     }
 
     public follow(){
@@ -55,5 +62,6 @@ export class Segment extends Node{
         )
         this.transform.rotation = slerpRot
     }
+
 
 }

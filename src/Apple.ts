@@ -34,6 +34,10 @@ export class Apple extends Entity {
     public eat(){
         this.getComponent(Transform).position = new Vector3(1 + Math.random() * 60, 1, 1 + Math.random() * 60)
         this.snake.addSegment(this.snake.body[Segment.quantity - 1 ])
+        this.updateScore()
+    }
+
+    public updateScore(){
         let score = Segment.quantity * 100
         this.ui.scoreValue.value =  score.toString()
     }

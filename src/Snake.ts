@@ -5,7 +5,7 @@ import { Segment } from "./Segment";
 import * as utils from '@dcl/ecs-scene-utils'
 
 export class Snake implements ISystem{
-    public head: Head = new Head(this) // So we can access to the snake from the head
+    public head: Head  // So we can access to the snake from the head
     public body: any = []
 
     constructor(){
@@ -18,7 +18,8 @@ export class Snake implements ISystem{
     ){
         this.head = new Head(this) // So we can access to the snake from the head
         this.head.addComponent(new GLTFShape("models/HeadSnake.glb"))
-        this.head.addComponent(
+
+        this.head.addComponentOrReplace(
           new Transform({
             rotation: new Quaternion(0, 1, 0, -1),
             position: initPos,
@@ -40,30 +41,53 @@ export class Snake implements ISystem{
         log('I die')
         // https://docs.decentraland.org/development-guide/entities-components/#pooling-entities-and-components
 
-        //engine.removeEntity(this.head)
-
+        engine.removeEntity(this.head)
+        this.head.removeComponent(utils.TriggerComponent)
         for(let s in this.body){
           let segment = this.body[s]
-          engine.removeEntity(segment)
+          segment.remove()
         }
         this.reborn()
     }
 
     public reborn(){
+        this.head = new Head(this) // So we can access to the snake from the head
 
-      //Define start and end positions
-      let StartPos = this.head.getComponent(Transform).position 
-      let EndPos = new Vector3(32, 1, 16)
-      //let randomPos : Vector3 = new Vector3(2,1,6)
+        let initPos : Vector3 = new Vector3(32, 1, 16)
+        this.head.addComponentOrReplace(
+          new Transform({
+            rotation: new Quaternion(0, 1, 0, -1),
+            position: initPos,
+          })
+        )
+        engine.addEntity(this.head)
+        this.addSegment(this.head) // segmento 0 aka cuello
+      this.head.addWallTrigger()
+
+      //this.head.addComponentOrReplace(
+      //  new Transform({
+      //    position: new Vector3(36, 1, 16),
+      //    rotation: new Quaternion(0, 1, 0, -1),
+      //  })
+      //)
+
+      //this.addSegment(this.head) // segmento 0 aka cuello
+
+      ////Define start and end positions
+      //let startPos = this.head.getComponent(Transform).position 
+      //let endPos = new Vector3(32, 1, 16)
+      ////let randomPos : Vector3 = new Vector3(2,1,6)
       
-      // Move entity
-      this.head.addComponent(
-        new utils.MoveTransformComponent(StartPos, EndPos, 1)
-      )
+      //// Move entity
+      //this.head.addComponent(
+      //  new utils.MoveTransformComponent(startPos, endPos, 0)
+      //)
 
-      this.head.getComponent(Transform).rotation.set(0, 1, 0, -1)
+      //this.head.getComponent(Transform).rotation.set(0, 1, 0, -1)
+      //this.addSegment(this.head) // segmento 0 aka cuello
+
       // Add entity to engine
-      engine.addEntity(this.head)
+      //engine.addEntity(this.head)
 
       // this.head.addComponent(
       //     new utils.TriggerComponent(
@@ -107,9 +131,9 @@ export class Snake implements ISystem{
 //   MAX_POOL_SIZE: 3,
 //   pool: [] as Head[],
 // 
-//   spawnEntity() {
+//   spawnEntity(snake : Snake) {
 //     // Get an entity from the pool
-//     const ent = spawner.getEntityFromPool()
+//     const ent = spawner.getEntityFromPool(snake)
 // 
 //     if (!ent) return
 // 
@@ -122,7 +146,7 @@ export class Snake implements ISystem{
 //     engine.addEntity(ent)
 //   },
 // 
-//   getEntityFromPool():  Head | null {
+//   getEntityFromPool(snake:Snake):  Head | null {
 //     // Check if an existing entity can be used
 //     for (let i = 0; i < spawner.pool.length; i++) {
 //       if (!spawner.pool[i].alive) {
@@ -131,7 +155,7 @@ export class Snake implements ISystem{
 //     }
 //     // If none of the existing are available, create a new one, unless the maximum pool size is reached
 //     if (spawner.pool.length < spawner.MAX_POOL_SIZE) {
-//       const instance = new Head(this)
+//       const instance = new Head(snake)
 //       spawner.pool.push(instance)
 //       return instance
 //     }
@@ -139,4 +163,4 @@ export class Snake implements ISystem{
 //   },
 // }
 // 
-// spawner.spawnEntity()
+// spawner.spawnEntity(snake)

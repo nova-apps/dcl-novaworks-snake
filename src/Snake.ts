@@ -60,7 +60,7 @@ export class Snake implements ISystem{
       
       // Move entity
       this.head.addComponent(
-        new utils.MoveTransformComponent(StartPos, EndPos, 1)
+        new utils.MoveTransformComponent(StartPos, EndPos, 0)
       )
 
       this.head.getComponent(Transform).rotation.set(0, 1, 0, -1)

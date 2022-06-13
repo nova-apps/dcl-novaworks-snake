@@ -65,22 +65,7 @@ export class Enviorment {
             wallTrigger.size = new Vector3(1, 15, 64)
         }
         
-        
-        new utils.Delay(100, () => {
-            wall.addComponent(
-                new utils.TriggerComponent(
-                wallTrigger,
-                    {
-                        onTriggerEnter : () => {
-                            if(this.snake.body){
-                                this.snake.die()
-                            }
-                        },
-                        // enableDebug: true
-                    }
-                )
-            )
-        })
+        wall.addComponent(new utils.TriggerComponent(wallTrigger))
 
         engine.addEntity(wall)
     }

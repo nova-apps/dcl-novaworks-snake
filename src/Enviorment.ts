@@ -78,9 +78,9 @@ export class Enviorment {
     }
 
     public AddWalls(){
-        this.createWall(32, 0, 64, 0)
-        this.createWall(32, 0, 0, 0)
-        this.createWall(0, 0, 32, 1)
-        this.createWall(64, 0, 32, 1)
+        this.createWall(32, 0, 63, 0)
+        this.createWall(32, 0, 1, 0)
+        this.createWall(1, 0, 32, 1)
+        this.createWall(63, 0, 32, 1)
     }
 }

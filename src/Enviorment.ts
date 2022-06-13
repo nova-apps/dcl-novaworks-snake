@@ -6,7 +6,7 @@ export class Enviorment {
     constructor(public snake: Snake){
         this.snake = snake
         this.addFloor()
-        this.addRoof()
+        // this.addRoof()
         this.AddWalls()
     }
 

@@ -38,6 +38,8 @@ export class Snake implements ISystem{
 
     public die(){
         log('I die')
+        Segment.quantity = 0
+        this.head.direction = ''
         // https://docs.decentraland.org/development-guide/entities-components/#pooling-entities-and-components
 
         //engine.removeEntity(this.head)

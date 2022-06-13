@@ -20,7 +20,7 @@ export class Enviorment {
         }))
         
         let floorMaterial = new Material()
-        floorMaterial.albedoColor = new Color3(0, 0, 0)
+        floorMaterial.albedoColor = new Color4(0, 0, 0, 0)
         floor.addComponent(floorMaterial)
         
         engine.addEntity(floor)
@@ -36,7 +36,7 @@ export class Enviorment {
         }))
         
         let roofMaterial = new Material()
-        roofMaterial.albedoColor = new Color3(0, 0, 0)
+        roofMaterial.albedoColor = new Color4(0, 0, 0, 0)
         roof.addComponent(roofMaterial)
         
         engine.addEntity(roof)
@@ -44,7 +44,7 @@ export class Enviorment {
 
     public createWall(x: number, y: number, z: number, rotation: number){
         let wallMaterial = new Material()
-        wallMaterial.albedoColor = new Color4(0, 0, 0, 0.8)
+        wallMaterial.albedoColor = new Color4(0, 0, 0, 0)
 
         const wall = new Entity()
         let wallShape = new PlaneShape()

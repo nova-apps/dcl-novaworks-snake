@@ -8,6 +8,9 @@ export class Head extends Node{
 
     public speed : number = 1
     public name? : string = 'head'
+
+    public headTrigger : Entity = new Entity()
+    
     constructor(
         public snake : Snake
     ){
@@ -15,6 +18,43 @@ export class Head extends Node{
         this.snake = snake
         this.addWallTrigger()
         this.addMouth()
+    }
+
+
+    public addWallTrigger(){
+        this.addComponent(
+            new utils.TriggerComponent(
+              new utils.TriggerBoxShape(),
+                {
+                    enableDebug : true,
+                    triggeredByLayer: 1,
+                    onTriggerEnter : () => {
+                        this.hit()
+                    }
+                },
+            )
+        )
+    }
+
+    /* Head hits Wall or own Body */ 
+    public hit(){
+        this.snake.die()
+    }
+
+    public addMouth(){
+        this.headTrigger.setParent(this)
+        this.headTrigger.addComponent(
+            new utils.TriggerComponent(
+                new utils.TriggerBoxShape(),
+                {
+                    layer: 4,
+                    triggeredByLayer: 2,
+                    onTriggerEnter : () => {
+                        log('eat apple')
+                    }
+                }
+            )
+        )
     }
 
     public forward(){
@@ -95,43 +135,5 @@ export class Head extends Node{
             this.addComponent(new utils.FollowPathComponent(newPath, 4))
             this.getComponent(Transform).rotation.set(0, 1, 0, 1)
         }
-    }
-
-    public addWallTrigger(){
-        this.addComponent(
-            new utils.TriggerComponent(
-              new utils.TriggerBoxShape(),
-                {
-                    enableDebug : true,
-                    triggeredByLayer: 1,
-                    onTriggerEnter : () => {
-                            this.hit()
-                    }
-                },
-            )
-        )
-    }
-
-    /* Head hits Wall or own Body */ 
-    public hit(){
-        this.snake.die()
-    }
-
-    public addMouth(){
-        let headTiggerEntity = new Entity()
-        headTiggerEntity.setParent(this)
-
-        headTiggerEntity.addComponent(
-            new utils.TriggerComponent(
-                new utils.TriggerBoxShape(),
-                {
-                    layer: 4,
-                    triggeredByLayer: 2,
-                    onTriggerEnter : () => {
-                        log('eat apple')
-                    }
-                }
-            )
-        )
     }
 }

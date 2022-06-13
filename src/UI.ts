@@ -21,6 +21,7 @@ export class UI {
         this.scoreValue.fontSize = 15
         this.scoreValue.vAlign = "bottom"
         this.scoreValue.positionX = -300
+        this.scoreValue.value = '0'
     }
 
     public shiftControls(){

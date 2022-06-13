@@ -1,5 +1,7 @@
 import { Node } from "./Node"
 
+import * as utils from '@dcl/ecs-scene-utils'
+
 export class Segment extends Node{
     static quantity: number = 0
     public id : number = 0
@@ -12,6 +14,7 @@ export class Segment extends Node{
         this.id = Segment.quantity
         Segment.quantity++
         this.add()
+        this.addSkin()
     }
 
     public add(){
@@ -30,8 +33,24 @@ export class Segment extends Node{
                 position: position
             })
         )
+
+        
         this.transform = this.getComponent(Transform)
         engine.addEntity(this)
+    }
+
+    public addSkin(){
+        // let newSegment = new Entity()
+        // newSegment.setParent(this)
+        // newSegment.addComponent(
+        //     new utils.TriggerComponent(
+        //         new utils.TriggerBoxShape(),
+        //         {
+        //             layer: 1,
+        //             enableDebug: true
+        //         }
+        //     )
+        // )
     }
 
     public follow(){

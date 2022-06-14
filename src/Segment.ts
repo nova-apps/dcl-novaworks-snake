@@ -2,6 +2,9 @@ import { Node } from "./Node"
 
 export class Segment extends Node{
     static quantity: number = 0
+    static record: number = 0
+    static shape = new GLTFShape("models/BodySneake.glb")
+
     public id : number = 0
     public distance : number = 1
     public spacing: number = 0.4
@@ -10,29 +13,25 @@ export class Segment extends Node{
     ){
         super();
         this.id = Segment.quantity
+        Segment.record = Segment.quantity
         Segment.quantity++
         this.add()
     }
 
     public add(){
+        this.addComponent(Segment.shape)
         let prevNodePos = this.prevNode.getComponent(Transform).position
+        // TODO: Revisar esto para que empiece mas atras del anterior
         let position = new Vector3(
             prevNodePos.x,
             prevNodePos.y,
             prevNodePos.z - this.distance
         )
-
-        this.addComponent(new GLTFShape("models/BodySneake.glb"))
-        // this.addComponent(new SphereShape)
-        this.addComponent(
-            new Transform({
-                // scale: new Vector3(0.5, 0.5, 0.5),
-                position: position
-            })
-        )
+        this.addComponent( new Transform({ position: position }))
         this.transform = this.getComponent(Transform)
         engine.addEntity(this)
     }
+
     public remove(){
         engine.removeEntity(this)
         if(Segment.quantity < 0){

@@ -5,7 +5,6 @@ import { Apple } from './Apple';
 
 export class Head extends Node{
     public direction = ''
-
     public speed : number = 1
     public name? : string = 'head'
 
@@ -22,12 +21,12 @@ export class Head extends Node{
         this.addMouth()
     }
 
-    public add(pos : Vector3){
+    public add(position: Vector3){
         this.addComponent(this.shape)
         this.addComponent(
           new Transform({
             rotation: new Quaternion(0, 1, 0, -1),
-            position: pos,
+            position: position,
           })
         )
         engine.addEntity(this)
@@ -48,9 +47,24 @@ export class Head extends Node{
         )
     }
 
+    /* Serpentine movement (not working) */
+    public serpentine(dt : number){
+      let timer : number = 0.0
+      const FREQUENCY : number = 1.0
+      const AMPLITUDE : number = 0.25
+      timer += dt
+      let oldPos = this.getComponent(Transform).position
+      let oscilatingY = oldPos.y + AMPLITUDE * Math.sin(timer * FREQUENCY)
+      let newPos = new Vector3(oldPos.x, oscilatingY , oldPos.z) 
+      //this.addComponent(
+      //  new utils.MoveTransformComponent( oldPos, newPos, 1)
+      //)
+
+      this.addComponent( new Transform({ position: newPos }))
+    }
+
     /* Head hits Wall or own Body */ 
     public hit(){
-        //this.removeComponent(this.shape)
         this.snake.die()
     }
 
@@ -63,7 +77,8 @@ export class Head extends Node{
                     layer: 4,
                     triggeredByLayer: 2,
                     onTriggerEnter : () => {
-                        log('eat apple')
+                        //log('eat apple')
+                        // esto no esta haciendo nada?
                     }
                 }
             )

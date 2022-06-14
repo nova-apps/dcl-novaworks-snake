@@ -6,18 +6,19 @@ import { UI } from './UI';
 export class Apple extends Entity {
     public score = 0
 
-    constructor(public snake: Snake, public ui: UI){
+    constructor(
+          public snake: Snake,
+          public ui: UI
+        ){
         super()
         this.snake = snake
         this.ui = ui
         
         this.addComponent(new GLTFShape("models/Apple.glb"))
-        // this.addComponent(new SphereShape())
         this.addComponent(new Transform({
-            scale: new Vector3(2, 2, 2),
-            position: new Vector3(1 + Math.random() * 64, 1, 1 + Math.random() * 64)
+            scale: new Vector3(3, 3, 3),
+            position: new Vector3( 5 + Math.random() * 55, 1, 1 + Math.random() * 55)
         }))
-
         this.addComponent(
             new utils.TriggerComponent(
                 new utils.TriggerSphereShape(),
@@ -26,29 +27,33 @@ export class Apple extends Entity {
                 }
             )
         )
-
         this.addPeel()
         engine.addEntity(this)
     }
     
-    public eat(){
-        this.getComponent(Transform).position = new Vector3(1 + Math.random() * 60, 1, 1 + Math.random() * 60)
-        this.snake.addSegment(this.snake.body[Segment.quantity - 1 ])
-        let score = Segment.quantity * 100
-        this.ui.scoreValue.value =  score.toString()
+    public eaten(){
+        // TODO: ruido de mordida
+        this.getComponent(Transform).position = new Vector3(5 + Math.random() * 55, 1, 5 + Math.random() * 55)
+        this.snake.addSegment(this.snake.body[Segment.quantity - 1])
+
+
+        // TODO: esto tiene que ser un metodo de ui que se actualice aca y cuando muere
+        // no hace falta que ui este "adentro" de apple, mas bien puede ser una variable y que se pueda leer/actualizar de cualquier lado
+        let score = (Segment.quantity - 1) * 100
+        let record = (Segment.record) * 100
+        this.ui.scoreValue.value =  score.toString() + " / " + record.toString()
     }
 
     public addPeel(){
         let appleTiggerEntity = new Entity()
         appleTiggerEntity.setParent(this)
-
         appleTiggerEntity.addComponent(
             new utils.TriggerComponent(
                 new utils.TriggerBoxShape(),
                 {
                     triggeredByLayer: 4,
                     onTriggerEnter : () => {
-                        this.eat()
+                        this.eaten()
                     }
                 }
             )

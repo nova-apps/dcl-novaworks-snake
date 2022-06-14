@@ -108,7 +108,7 @@ export class Head extends Node{
             let newPath = []
             let position = this.getComponent(Transform).position
             newPath[0] = new Vector3( position.x, position.y, position.z)
-            newPath[1] = new Vector3( position.x, position.y, 64)
+            newPath[1] = new Vector3( position.x, position.y, 32)
             this.addComponent(new utils.FollowPathComponent(newPath, this.getPathTime(position.z)))
             this.getComponent(Transform).rotation.set(0, 1, 0, -1)
         }
@@ -121,7 +121,7 @@ export class Head extends Node{
             let newPath = []
             let position = this.getComponent(Transform).position
             newPath[0] = new Vector3( position.x, position.y, position.z)
-            newPath[1] = new Vector3( 64, position.y, position.z)
+            newPath[1] = new Vector3( 32, position.y, position.z)
             this.addComponent(new utils.FollowPathComponent(newPath, this.getPathTime(position.x)))
             this.getComponent(Transform).rotation.set(0, 0, 0, 1)
         }

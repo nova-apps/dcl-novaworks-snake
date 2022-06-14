@@ -40,6 +40,7 @@ export class Snake implements ISystem{
     public die(){
         //log('I die')
         this.head.direction = ''
+        this.head.removeComponent(utils.FollowPathComponent)
         this.dieSource.playOnce()
         
         // https://github.com/decentraland-scenes/lazy-loading/blob/7012e3fa6d346b11066b8925150b1cedd8a5dd08/src/subScene.ts#L35

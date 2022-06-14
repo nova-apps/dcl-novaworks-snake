@@ -1,6 +1,6 @@
 import { Snake } from './Snake'
 import { Apple } from './Apple'
-import { Wall } from './Enviorment'
+import { Wall } from './Wall'
 import { UI } from './UI' 
 import { Tree } from './Tree' 
 

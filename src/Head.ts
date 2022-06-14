@@ -1,7 +1,7 @@
 import * as utils from '@dcl/ecs-scene-utils'
 import { Node } from "./Node";
 import { Snake } from "./Snake";
-import { Apple } from './Apple';
+//import { Apple } from './Apple';
 
 export class Head extends Node{
     public direction = ''
@@ -37,7 +37,7 @@ export class Head extends Node{
             new utils.TriggerComponent(
               new utils.TriggerBoxShape(),
                 {
-                    enableDebug :false,
+                    enableDebug : false,
                     triggeredByLayer: 1,
                     onTriggerEnter : () => {
                         this.hit()
@@ -76,7 +76,7 @@ export class Head extends Node{
                     layer: 4,
                     triggeredByLayer: 2,
                     onTriggerEnter : () => {
-                        //log('eat apple')
+                        log('eat apple')
                         // esto no esta haciendo nada?
                     }
                 }
@@ -90,8 +90,8 @@ export class Head extends Node{
         let percent = position / 64
         let percentToComplete = 1 - percent
         let currentTimeToCompletePath = totalTimePath * percentToComplete
-        log(value)
-        log(currentTimeToCompletePath)
+        //log(value)
+        //log(currentTimeToCompletePath)
         return currentTimeToCompletePath
     }
 

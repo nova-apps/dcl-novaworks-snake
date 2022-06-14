@@ -1,4 +1,5 @@
 import { Node } from "./Node"
+import { Head } from "./Head"
 
 export class Segment extends Node{
     static quantity: number = 0
@@ -33,6 +34,7 @@ export class Segment extends Node{
     }
 
     public remove(){
+        //this.getComponent('engine.shape').visible = false
         engine.removeEntity(this)
         if(Segment.quantity < 0){
             Segment.quantity--
@@ -61,4 +63,14 @@ export class Segment extends Node{
         this.transform.rotation = slerpRot
     }
 
+    /** Checks if head had bit this segment */
+    public isBiten(head : Head){
+        let segmentPos = this.getComponent(Transform).position
+        let headPos    = head.getComponent(Transform).position
+        //let distance = Math.floor( Vector3.Distance(segmentPos, headPos) )
+        let distance = Vector3.Distance(segmentPos, headPos) 
+        log("DIS:", this.id, distance.valueOf() )
+    }
+
+    
 }

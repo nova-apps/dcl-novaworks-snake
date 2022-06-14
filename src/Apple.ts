@@ -34,7 +34,9 @@ export class Apple extends Entity {
     public eaten(){
         // TODO: ruido de mordida
         this.getComponent(Transform).position = new Vector3(5 + Math.random() * 55, 1, 5 + Math.random() * 55)
-        this.snake.addSegment(this.snake.body[Segment.quantity - 1])
+        //this.snake.addSegment(this.snake.body[Segment.quantity - 1])
+        //this.snake.addSegment(this.snake.body[this.snake.body.length - 1])
+        this.snake.addSegment()
 
 
         // TODO: esto tiene que ser un metodo de ui que se actualice aca y cuando muere

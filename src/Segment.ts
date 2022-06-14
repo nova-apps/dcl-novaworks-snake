@@ -37,9 +37,6 @@ export class Segment extends Node{
     public remove(){
         engine.removeEntity(this)
         Segment.quantity = 0
-        // if(Segment.quantity < 0){
-        //     Segment.quantity--
-        // }
     }
 
     public follow(){

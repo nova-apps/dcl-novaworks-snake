@@ -67,7 +67,7 @@ export class Segment extends Node{
         let dis = distance.valueOf() * 100
 
         log( "DIS:", this.id.valueOf(), dis )
-        if(dis < 3){
+        if(dis < 0){
            log('muerde')
            return true
         }

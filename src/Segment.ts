@@ -65,7 +65,13 @@ export class Segment extends Node{
         //let distance = Math.floor( Vector3.Distance( segmentPos, headPos) )
         let distance = Vector3.Distance(segmentPos, headPos) 
         let dis = distance.valueOf() * 100
+
         log( "DIS:", this.id.valueOf(), dis )
+        if(dis < 3){
+           log('muerde')
+           return true
+        }
+        return false
     }
 
 }

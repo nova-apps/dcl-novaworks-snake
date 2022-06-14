@@ -40,6 +40,7 @@ export class Snake implements ISystem{
     public die(){
         //log('I die')
         this.head.direction = ''
+        this.head.velocity = 3
         this.head.removeComponent(utils.FollowPathComponent)
         this.dieSource.playOnce()
         

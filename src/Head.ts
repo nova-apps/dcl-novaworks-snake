@@ -8,7 +8,7 @@ export class Head extends Node{
     public speed : number = 1
     public name? : string = 'head'
 
-    public velocity = 2
+    public velocity = 3
 
     public headTrigger : Entity = new Entity()
 
@@ -84,7 +84,7 @@ export class Head extends Node{
                     triggeredByLayer: 2,
                     onTriggerEnter : () => {
                         biteSource.playOnce()
-                        this.velocity = this.velocity - 0.5
+                        this.velocity = this.velocity - 0.05
                     },
                 }
             )
@@ -92,7 +92,6 @@ export class Head extends Node{
     }
 
     public getPathTime(value: number){
-        this.velocity = 4
         let position = value
         let percent = position / 64
         let percentToComplete = 1 - percent

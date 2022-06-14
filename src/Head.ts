@@ -8,6 +8,8 @@ export class Head extends Node{
     public speed : number = 1
     public name? : string = 'head'
 
+    public velocity = 2
+
     public headTrigger : Entity = new Entity()
 
     public shape : GLTFShape = new GLTFShape("models/HeadSnake.glb")
@@ -82,22 +84,21 @@ export class Head extends Node{
                     triggeredByLayer: 2,
                     onTriggerEnter : () => {
                         biteSource.playOnce()
-                        //log('eat apple')
-                        // esto no esta haciendo nada?
-                    }
+                        this.velocity = this.velocity - 0.5
+                    },
                 }
             )
         )
     }
 
     public getPathTime(value: number){
-        let totalTimePath = 4
+        this.velocity = 4
         let position = value
         let percent = position / 64
         let percentToComplete = 1 - percent
-        let currentTimeToCompletePath = totalTimePath * percentToComplete
-        log(value)
-        log(currentTimeToCompletePath)
+        let currentTimeToCompletePath = this.velocity * percentToComplete
+        // log(value)
+        // log(currentTimeToCompletePath)
         return currentTimeToCompletePath
     }
 
@@ -135,7 +136,7 @@ export class Head extends Node{
             let position = this.getComponent(Transform).position
             newPath[0] = new Vector3( position.x, position.y, position.z)
             newPath[1] = new Vector3( 0, position.y, position.z)
-            this.addComponent(new utils.FollowPathComponent(newPath, this.getPathTime(64 - position.x)))
+            this.addComponent(new utils.FollowPathComponent(newPath, this.getPathTime(32 - position.x)))
             this.getComponent(Transform).rotation.set(0, 1, 0, 0)
         }
     }
@@ -148,7 +149,7 @@ export class Head extends Node{
             let position = this.getComponent(Transform).position
             newPath[0] = new Vector3( position.x, position.y, position.z)
             newPath[1] = new Vector3( position.x, position.y, 0)
-            this.addComponent(new utils.FollowPathComponent(newPath, this.getPathTime(64 - position.z)))
+            this.addComponent(new utils.FollowPathComponent(newPath, this.getPathTime(32 - position.z)))
             this.getComponent(Transform).rotation.set(0, 1, 0, 1)
         }
     }

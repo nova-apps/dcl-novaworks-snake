@@ -20,11 +20,16 @@ export class Apple extends Entity {
             rotation: new Quaternion(0, 1, 0, 1),
             position: new Vector3(1 + (Math.random() * 10), 1, 1 + (Math.random() * 10))
         }))
+
+        let appleTriggerShape = new utils.TriggerBoxShape()
+        appleTriggerShape.size = new Vector3(1.5, 1.5, 1.5)
+        
         this.addComponent(
             new utils.TriggerComponent(
-                new utils.TriggerSphereShape(),
+                appleTriggerShape,
                 {
                     layer: 2,
+                    enableDebug: false
                 }
             )
         )

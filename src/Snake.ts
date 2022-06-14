@@ -12,6 +12,9 @@ export class Snake implements ISystem{
     public dieClip = new AudioClip("sounds/game_over.wav")
     public dieSource = new AudioSource(this.dieClip)
 
+    // public bitenClip = new AudioClip("sounds/snake.mp3")
+    // public bitenSource = new AudioSource(this.bitenClip)
+
     constructor(){
         this.born()
         this.dieSource.volume = 1

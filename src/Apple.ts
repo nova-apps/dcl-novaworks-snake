@@ -14,7 +14,7 @@ export class Apple extends Entity {
         this.snake = snake
         this.ui = ui
         
-        this.addComponent(new GLTFShape("models/Apple.glb"))
+        this.addComponent(new GLTFShape("models/Apple_Animated.glb"))
         this.addComponent(new Transform({
             scale: new Vector3(3, 3, 3),
             rotation: new Quaternion(0, 1, 0, 1),

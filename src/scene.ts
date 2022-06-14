@@ -4,7 +4,7 @@
 const piso21 = new Entity("Piso")
 engine.addEntity(piso21)
 const piso21transform = new Transform({
-  position: new Vector3(30.61852, -0.1366038, -0.007854939),
+  position: new Vector3(30.83686, 0, -5),
   rotation: new Quaternion(0, 0, 0, 1),
   scale: new Vector3(1.227167, 0.4928873, 1.436701)
 })
@@ -21,7 +21,7 @@ piso21.addComponentOrReplace(piso21GLTFShape)
 const flores228 = new Entity("flores 2")
 engine.addEntity(flores228)
 const flores228transform = new Transform({
-  position: new Vector3(8.39495, -0.007206917, 12.69886),
+  position: new Vector3(8.5, 0.1672406, 8.75),
   rotation: new Quaternion(0, 0, 0, 1),
   scale: new Vector3(0.6783227, 0.6783227, 0.6933383)
 })
@@ -38,7 +38,7 @@ flores228.addComponentOrReplace(flores228GLTFShape)
 const flores229 = new Entity("flores 2")
 engine.addEntity(flores229)
 const flores229transform = new Transform({
-  position: new Vector3(23.8915, -0.01325607, 12.91226),
+  position: new Vector3(23.33467, 0.1672406, 8.5),
   rotation: new Quaternion(0, 0, 0, 1),
   scale: new Vector3(0.5914137, 0.5914137, 0.6549169)
 })
@@ -51,7 +51,7 @@ flores229.addComponentOrReplace(flores228GLTFShape)
 const flores230 = new Entity("flores 2")
 engine.addEntity(flores230)
 const flores230transform = new Transform({
-  position: new Vector3(8.342591, 0.00771904, 28.27596),
+  position: new Vector3(8.342591, 0.1749597, 25.52596),
   rotation: new Quaternion(0, 0, 0, 1),
   scale: new Vector3(0.6596639, 0.6596639, 0.5995118)
 })
@@ -64,7 +64,7 @@ flores230.addComponentOrReplace(flores228GLTFShape)
 const flores231 = new Entity("flores 2")
 engine.addEntity(flores231)
 const flores231transform = new Transform({
-  position: new Vector3(23.6589, -0.0496645, 27.99642),
+  position: new Vector3(23.45382, 0.1672406, 23.75),
   rotation: new Quaternion(0, -0.7125154, 0, 0.7016565),
   scale: new Vector3(0.5699023, 0.5699023, 0.5699023)
 })
@@ -77,7 +77,7 @@ flores231.addComponentOrReplace(flores228GLTFShape)
 const pared236 = new Entity("Pared 2")
 engine.addEntity(pared236)
 const pared236transform = new Transform({
-  position: new Vector3(15.45312, 0.9460869, 4.62361),
+  position: new Vector3(15.45312, 0.9460869, 0.37361),
   rotation: new Quaternion(0, 0, 0, 1),
   scale: new Vector3(1.201305, 1, 1)
 })
@@ -94,7 +94,7 @@ pared236.addComponentOrReplace(pared236GLTFShape)
 const pared237 = new Entity("Pared 2")
 engine.addEntity(pared237)
 const pared237transform = new Transform({
-  position: new Vector3(30.39264, 0.9326324, 19.90849),
+  position: new Vector3(30.10993, 0.9326324, 15.75),
   rotation: new Quaternion(0, 0.7071066, 0, 0.707107),
   scale: new Vector3(1.246449, 1, 1)
 })
@@ -107,7 +107,7 @@ pared237.addComponentOrReplace(pared236GLTFShape)
 const pared238 = new Entity("Pared 2")
 engine.addEntity(pared238)
 const pared238transform = new Transform({
-  position: new Vector3(0.4471545, 0.9424222, 19.9722),
+  position: new Vector3(0.8897152, 0.9424222, 15.7222),
   rotation: new Quaternion(0, 0.7071066, 0, 0.707107),
   scale: new Vector3(1.251719, 1, 1)
 })
@@ -120,7 +120,7 @@ pared238.addComponentOrReplace(pared236GLTFShape)
 const pared239 = new Entity("Pared 2")
 engine.addEntity(pared239)
 const pared239transform = new Transform({
-  position: new Vector3(15.3679, 0.9409933, 35.32378),
+  position: new Vector3(15.3679, 0.9409933, 31.07378),
   rotation: new Quaternion(0, 0, 0, 1),
   scale: new Vector3(1.195681, 1, 1)
 })
@@ -133,7 +133,7 @@ pared239.addComponentOrReplace(pared236GLTFShape)
 const arbol245 = new Entity("Arbol 2")
 engine.addEntity(arbol245)
 const arbol245transform = new Transform({
-  position: new Vector3(23.99257, 3.57504, 13.2343),
+  position: new Vector3(23.99257, 3.57504, 8.984301),
   rotation: new Quaternion(0, 0, 0, 1),
   scale: new Vector3(0.5151527, 0.5151527, 0.5151527)
 })
@@ -150,7 +150,7 @@ arbol245.addComponentOrReplace(arbol245GLTFShape)
 const arbol246 = new Entity("Arbol 2")
 engine.addEntity(arbol246)
 const arbol246transform = new Transform({
-  position: new Vector3(5.703235, 3.599062, 26.38055),
+  position: new Vector3(5.703235, 3.599062, 22.13055),
   rotation: new Quaternion(0, 0, 0, 1),
   scale: new Vector3(0.5205349, 0.5205349, 0.5205349)
 })
@@ -180,7 +180,7 @@ puente50.addComponentOrReplace(puente50GLTFShape)
 const pueste253 = new Entity("Pueste  2")
 engine.addEntity(pueste253)
 const pueste253transform = new Transform({
-  position: new Vector3(13, 1.5, 3.25),
+  position: new Vector3(13, 1.5, -1),
   rotation: new Quaternion(0, 0.7071074, 0, -0.7071062),
   scale: new Vector3(1, 1, 1)
 })

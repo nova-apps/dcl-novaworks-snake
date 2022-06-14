@@ -7,9 +7,9 @@ export class Enviorment {
     constructor(public snake: Snake, public ui: UI){
         this.snake = snake
         this.ui = ui
-        this.addFloor()
+        // this.addFloor()
         // this.addRoof()
-        this.AddWalls()
+        // this.AddWalls()
     }
 
     public addFloor(){
@@ -50,7 +50,7 @@ export class Enviorment {
 
         const wall = new Entity()
         let wallShape = new PlaneShape()
-        wallShape.withCollisions = true
+        wallShape.withCollisions = false
         wall.addComponent(wallShape)
         wall.addComponent(new Transform({
             position: new Vector3(x, y, z),

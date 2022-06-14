@@ -20,7 +20,7 @@ export class Snake implements ISystem{
 
     /* Inits the snake */
     public born(
-        initPos : Vector3 = new Vector3(32, 1, 16)
+        initPos : Vector3 = new Vector3(16, 1, 8)
     ){
         this.head = new Head(this) 
         this.head.add(initPos)
@@ -53,7 +53,7 @@ export class Snake implements ISystem{
 
     public respawn(){
       let startPos = this.head.getComponent(Transform).position 
-      let endPos = new Vector3(32, 1, 16)
+      let endPos = new Vector3(16, 1, 8)
       this.head.addComponent(
         new utils.MoveTransformComponent(
           startPos,

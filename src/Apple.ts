@@ -16,8 +16,8 @@ export class Apple extends Entity {
         
         this.addComponent(new GLTFShape("models/Apple.glb"))
         this.addComponent(new Transform({
-            scale: new Vector3(2, 2, 2),
-            position: new Vector3( 5 + Math.random() * 55, 1, 1 + Math.random() * 55)
+            scale: new Vector3(4, 4, 4),
+            position: new Vector3(1 + (Math.random() * 10), 1, 1 + (Math.random() * 10))
         }))
         this.addComponent(
             new utils.TriggerComponent(
@@ -32,7 +32,7 @@ export class Apple extends Entity {
     }
     
     public eaten(){
-        this.getComponent(Transform).position = new Vector3(5 + Math.random() * 55, 1, 5 + Math.random() * 55)
+        this.getComponent(Transform).position = new Vector3(2 + (Math.random() * 16), 1, 2 + (Math.random() * 16))
         this.snake.addSegment(this.snake.body[Segment.quantity - 1])
 
         // TODO: esto tiene que ser un metodo de ui que se actualice aca y cuando muere

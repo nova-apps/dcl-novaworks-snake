@@ -6,6 +6,7 @@ import { Snake } from './Snake'
 export class UI {
     public canvas = new UICanvas()
     public scoreValue = new UIText(this.canvas)
+    public bestValue = new UIText(this.canvas)
 
     constructor(public snake: Snake){
         this.snake = snake
@@ -15,13 +16,25 @@ export class UI {
         const scoreText = new UIText(this.canvas)
         scoreText.fontSize = 15
         scoreText.vAlign = "bottom"
-        scoreText.positionX = -360
+        scoreText.positionX = -260
         scoreText.value = 'Score:'
 
         this.scoreValue.fontSize = 15
         this.scoreValue.vAlign = "bottom"
-        this.scoreValue.positionX = -300
+        this.scoreValue.positionX = -200
         this.scoreValue.value = '0'
+
+
+        const bestText = new UIText(this.canvas)
+        bestText.fontSize = 15
+        bestText.vAlign = "bottom"
+        bestText.positionX = -460
+        bestText.value = 'Best:'
+
+        this.bestValue.fontSize = 15
+        this.bestValue.vAlign = "bottom"
+        this.bestValue.positionX = -400
+        this.bestValue.value = '0'
     }
 
     public shiftControls(){

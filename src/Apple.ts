@@ -36,12 +36,12 @@ export class Apple extends Entity {
         this.getComponent(Transform).position = new Vector3(5 + Math.random() * 55, 1, 5 + Math.random() * 55)
         this.snake.addSegment(this.snake.body[Segment.quantity - 1])
 
-
         // TODO: esto tiene que ser un metodo de ui que se actualice aca y cuando muere
         // no hace falta que ui este "adentro" de apple, mas bien puede ser una variable y que se pueda leer/actualizar de cualquier lado
         let score = (Segment.quantity - 1) * 100
         let record = (Segment.record) * 100
-        this.ui.scoreValue.value =  score.toString() + " / " + record.toString()
+        this.ui.scoreValue.value =  score.toString()
+        this.ui.bestValue.value = record.toString()
     }
 
     public addPeel(){

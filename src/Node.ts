@@ -5,5 +5,5 @@ export class Node extends Entity{
     constructor(){
         super();
     }
-    public dies(){}
+    //public dies(){}
 }

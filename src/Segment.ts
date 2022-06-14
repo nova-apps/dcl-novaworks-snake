@@ -1,4 +1,5 @@
 import { Node } from "./Node"
+import { Head } from "./Head"
 
 export class Segment extends Node{
     static quantity: number = 0
@@ -42,11 +43,7 @@ export class Segment extends Node{
     public follow(){
         let originalPos = this.getComponent(Transform).position
         let targetPos = this.prevNode.getComponent(Transform).position
-        this.transform.position = Vector3.Lerp(
-           originalPos,
-           targetPos,
-           this.spacing
-        )
+        this.transform.position = Vector3.Lerp( originalPos, targetPos, this.spacing)
     }
 
     /** Imitate rotatation */
@@ -56,9 +53,18 @@ export class Segment extends Node{
         let slerpRot = Quaternion.Slerp(
             Quaternion.Euler(originalRot.x,originalRot.y,originalRot.z),
             Quaternion.Euler(targetRot.x,targetRot.y,targetRot.z), 
-            this.spacing // revisar este 
+            this.spacing
         )
         this.transform.rotation = slerpRot
+    }
+
+    /** Checks if the treacherous head had biten us */
+    public isBiten(head : Head){
+        let segmentPos = this.getComponent(Transform).position
+        let headPos    = head.getComponent(Transform).position
+        //let distance = Math.floor( Vector3.Distance( segmentPos, headPos) )
+        let distance = Vector3.Distance(segmentPos, headPos) 
+        log( "DIS:", this.id, distance.valueOf() )
     }
 
 }

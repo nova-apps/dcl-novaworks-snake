@@ -39,7 +39,8 @@ export class Apple extends Entity {
     
     public eaten(){
         this.getComponent(Transform).position = new Vector3(2 + (Math.random() * 16), 1, 2 + (Math.random() * 16))
-        this.snake.addSegment(this.snake.body[Segment.quantity - 1])
+        //this.snake.addSegment(this.snake.body[Segment.quantity - 1])
+        this.snake.addSegment()
 
         // TODO: esto tiene que ser un metodo de ui que se actualice aca y cuando muere
         // no hace falta que ui este "adentro" de apple, mas bien puede ser una variable y que se pueda leer/actualizar de cualquier lado
@@ -47,6 +48,7 @@ export class Apple extends Entity {
         // let record = (Segment.record) * 100
         // this.ui.scoreValue.value =  score.toString()
         // this.ui.bestValue.value = record.toString()
+
         this.ui.increaseScore()
     }
 

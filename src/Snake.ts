@@ -82,10 +82,8 @@ export class Snake implements ISystem{
       //this.head.serpentine(dt)
       for (let segment of this.body) {
         segment.follow()
-        if(segment.id.valueOf() < 3){
-          if(segment.isBiten(this.head)){
-            this.die()
-          }
+        if(segment.isBiten(this.head)){
+          this.die()
         }
         //segment.rotate()
       };

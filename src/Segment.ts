@@ -64,11 +64,12 @@ export class Segment extends Node{
         let headPos    = head.getComponent(Transform).position
         //let distance = Math.floor( Vector3.Distance( segmentPos, headPos) )
         let distance = Vector3.Distance(segmentPos, headPos) 
-        let dis = distance.valueOf() * 100
-
-        log( "DIS:", this.id.valueOf(), dis )
-        if(dis < 0){
-           log('muerde')
+        let dis = distance.valueOf() * 10
+        if(this.id.valueOf() > 5){
+            log( "DIS:", this.id.valueOf().toString(), dis )
+        }
+        if(this.id > 3 && dis < 5){
+           log('me muerde')
            return true
         }
         return false

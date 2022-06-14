@@ -16,7 +16,8 @@ export class Apple extends Entity {
         
         this.addComponent(new GLTFShape("models/Apple.glb"))
         this.addComponent(new Transform({
-            scale: new Vector3(4, 4, 4),
+            scale: new Vector3(3, 3, 3),
+            rotation: new Quaternion(0, 1, 0, 1),
             position: new Vector3(1 + (Math.random() * 10), 1, 1 + (Math.random() * 10))
         }))
         this.addComponent(

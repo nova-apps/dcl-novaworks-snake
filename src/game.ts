@@ -7,5 +7,5 @@ let snake = new Snake()
 engine.addSystem(snake)
 let ui = new UI(snake)
 new Apple(snake, ui)
-new Enviorment(snake)
+new Enviorment(snake, ui)
 

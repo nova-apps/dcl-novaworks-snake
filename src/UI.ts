@@ -4,6 +4,9 @@ const input = Input.instance
 import { Snake } from './Snake'
 
 export class UI {
+    public score = 0
+    public best = 0
+
     public canvas = new UICanvas()
     public scoreValue = new UIText(this.canvas)
     public bestValue = new UIText(this.canvas)
@@ -33,10 +36,25 @@ export class UI {
 
         this.bestValue.fontSize = 15
         this.bestValue.vAlign = "bottom"
-        this.bestValue.positionX = -400
+        this.bestValue.positionX = -410
         this.bestValue.value = '0'
     }
 
+    public increaseScore(){
+        this.score = this.score + 100
+        this.scoreValue.value = this.score.toString()
+
+        if(this.score >= this.best){
+            this.best = this.score
+            this.bestValue.value = this.best.toString()
+        }
+    }
+
+    public resetScore(){
+        this.score = 0
+        this.scoreValue.value = this.score.toString()
+    }
+    
     public shiftControls(){
         let toggle = false
 

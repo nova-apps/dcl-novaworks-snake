@@ -1,6 +1,7 @@
 import { Node} from "./Node";
 import { Head } from "./Head";
 import { Segment } from "./Segment";
+import { UI } from "./UI";
 
 import * as utils from '@dcl/ecs-scene-utils'
 
@@ -40,7 +41,7 @@ export class Snake implements ISystem{
         //log('I die')
         this.head.direction = ''
         this.dieSource.playOnce()
-
+        
         // https://github.com/decentraland-scenes/lazy-loading/blob/7012e3fa6d346b11066b8925150b1cedd8a5dd08/src/subScene.ts#L35
         this.head.getComponent('engine.shape').visible = false
         for(let s in this.body){

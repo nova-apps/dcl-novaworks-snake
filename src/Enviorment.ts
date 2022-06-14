@@ -1,10 +1,12 @@
 
 import * as utils from '@dcl/ecs-scene-utils'
 import { Snake } from './Snake'
+import { UI } from './UI'
 
 export class Enviorment {
-    constructor(public snake: Snake){
+    constructor(public snake: Snake, public ui: UI){
         this.snake = snake
+        this.ui = ui
         this.addFloor()
         // this.addRoof()
         this.AddWalls()
@@ -69,8 +71,12 @@ export class Enviorment {
             new utils.TriggerComponent(
                 wallTrigger,
                 {
-                    layer: 1
-                }
+                    layer: 1,
+                    onTriggerEnter : () => {
+                        this.ui.resetScore()
+                    }
+                },
+                
             )
         )
 

@@ -59,7 +59,6 @@ export class Head extends Node{
       //this.addComponent(
       //  new utils.MoveTransformComponent( oldPos, newPos, 1)
       //)
-
       this.addComponent( new Transform({ position: newPos }))
     }
 

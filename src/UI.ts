@@ -8,14 +8,25 @@ export class UI {
     public best = 0
 
     public canvas = new UICanvas()
+    public container = new UIContainerRect(this.canvas)
     public scoreValue = new UIText(this.canvas)
     public bestValue = new UIText(this.canvas)
+    
 
     constructor(public snake: Snake){
         this.snake = snake
         this.addControls()
         this.shiftControls()
+        this.initScoreValues()
 
+        this.container.width = "25%"
+        this.container.height = "5%"
+        this.container.color = Color4.Black()
+        this.container.positionX = -350
+        this.container.positionY = -297
+    }
+
+    public initScoreValues(){
         const scoreText = new UIText(this.canvas)
         scoreText.fontSize = 15
         scoreText.vAlign = "bottom"
@@ -26,7 +37,6 @@ export class UI {
         this.scoreValue.vAlign = "bottom"
         this.scoreValue.positionX = -200
         this.scoreValue.value = '0'
-
 
         const bestText = new UIText(this.canvas)
         bestText.fontSize = 15

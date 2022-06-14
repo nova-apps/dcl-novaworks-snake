@@ -20,7 +20,7 @@ export class Segment extends Node{
     }
 
     public add(){
-        this.id = Segment.quantity - 1
+        this.id = Segment.quantity 
         this.addComponent(Segment.shape)
         let prevNodePos = this.prevNode.getComponent(Transform).position
         // TODO: Revisar esto para que empiece mas atras del anterior
@@ -36,9 +36,10 @@ export class Segment extends Node{
 
     public remove(){
         engine.removeEntity(this)
-        if(Segment.quantity < 0){
-            Segment.quantity--
-        }
+        Segment.quantity = 0
+        // if(Segment.quantity < 0){
+        //     Segment.quantity--
+        // }
     }
 
     public follow(){
@@ -67,7 +68,7 @@ export class Segment extends Node{
         let distance = Vector3.Distance(segmentPos, headPos) 
         let dis = distance.valueOf() * 10
         if(this.id.valueOf() > 3){
-            log( "DIS:", this.id.valueOf().toString(), dis )
+            log( "head distance:", this.id.valueOf().toString(), dis )
         }
         if(this.id.valueOf() > 5 ){
           if(dis < 5){

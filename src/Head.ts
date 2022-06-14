@@ -68,6 +68,11 @@ export class Head extends Node{
     }
 
     public addMouth(){
+        const biteClip = new AudioClip("sounds/bite.wav")
+        const biteSource = new AudioSource(biteClip)
+        biteSource.volume = 4
+        this.headTrigger.addComponent(biteSource)
+
         this.headTrigger.setParent(this)
         this.headTrigger.addComponent(
             new utils.TriggerComponent(
@@ -76,6 +81,7 @@ export class Head extends Node{
                     layer: 4,
                     triggeredByLayer: 2,
                     onTriggerEnter : () => {
+                        biteSource.playOnce()
                         //log('eat apple')
                         // esto no esta haciendo nada?
                     }

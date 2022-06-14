@@ -8,8 +8,13 @@ export class Snake implements ISystem{
     public head: Head  = new Head(this)// So we can access to the snake from the head
     public body: any = []
 
+    public dieClip = new AudioClip("sounds/game_over.wav")
+    public dieSource = new AudioSource(this.dieClip)
+
     constructor(){
         this.born()
+        this.dieSource.volume = 1
+        this.head.addComponent(this.dieSource)
     }
 
     /* Inits the snake */
@@ -34,6 +39,7 @@ export class Snake implements ISystem{
     public die(){
         //log('I die')
         this.head.direction = ''
+        this.dieSource.playOnce()
 
         // https://github.com/decentraland-scenes/lazy-loading/blob/7012e3fa6d346b11066b8925150b1cedd8a5dd08/src/subScene.ts#L35
         this.head.getComponent('engine.shape').visible = false

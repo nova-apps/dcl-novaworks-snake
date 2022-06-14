@@ -4,9 +4,9 @@
 const piso21 = new Entity("Piso")
 engine.addEntity(piso21)
 const piso21transform = new Transform({
-  position: new Vector3(30.83686, 0, -5),
+  position: new Vector3(31.45892, 0, -15.83379),
   rotation: new Quaternion(0, 0, 0, 1),
-  scale: new Vector3(1.227167, 0.4928873, 1.436701)
+  scale: new Vector3(1.249306, 0.6968352, 2.526631)
 })
 piso21.addComponentOrReplace(piso21transform)
 const piso21GLTFShape = new GLTFShape("models/Piso.glb")
@@ -21,7 +21,7 @@ piso21.addComponentOrReplace(piso21GLTFShape)
 const flores228 = new Entity("flores 2")
 engine.addEntity(flores228)
 const flores228transform = new Transform({
-  position: new Vector3(8.5, 0.1672406, 8.75),
+  position: new Vector3(8.5, 0.1281817, 8.75),
   rotation: new Quaternion(0, 0, 0, 1),
   scale: new Vector3(0.6783227, 0.6783227, 0.6933383)
 })
@@ -38,7 +38,7 @@ flores228.addComponentOrReplace(flores228GLTFShape)
 const flores229 = new Entity("flores 2")
 engine.addEntity(flores229)
 const flores229transform = new Transform({
-  position: new Vector3(23.33467, 0.1672406, 8.5),
+  position: new Vector3(23.69882, 0.1672406, 8.5),
   rotation: new Quaternion(0, 0, 0, 1),
   scale: new Vector3(0.5914137, 0.5914137, 0.6549169)
 })
@@ -64,7 +64,7 @@ flores230.addComponentOrReplace(flores228GLTFShape)
 const flores231 = new Entity("flores 2")
 engine.addEntity(flores231)
 const flores231transform = new Transform({
-  position: new Vector3(23.45382, 0.1672406, 23.75),
+  position: new Vector3(23.32147, 0.1672406, 23.75),
   rotation: new Quaternion(0, -0.7125154, 0, 0.7016565),
   scale: new Vector3(0.5699023, 0.5699023, 0.5699023)
 })
@@ -180,7 +180,7 @@ puente50.addComponentOrReplace(puente50GLTFShape)
 const pueste253 = new Entity("Pueste  2")
 engine.addEntity(pueste253)
 const pueste253transform = new Transform({
-  position: new Vector3(13, 1.5, -1),
+  position: new Vector3(15.58878, 1.5, -1),
   rotation: new Quaternion(0, 0.7071074, 0, -0.7071062),
   scale: new Vector3(1, 1, 1)
 })

@@ -1,11 +1,14 @@
 import { Snake } from './Snake'
 import { Apple } from './Apple'
-import { Enviorment } from './Enviorment'
+import { Wall } from './Enviorment'
 import { UI } from './UI' 
+import { Tree } from './Tree' 
 
 let snake = new Snake()
-engine.addSystem(snake)
 let ui = new UI(snake)
-new Apple(snake, ui)
-new Enviorment(snake, ui)
+let apple = new Apple(snake, ui)
+let walls = new Wall(snake, ui)
+let tree_1 = new Tree(ui, 5.7, 22)
+let tree_2 = new Tree(ui, 24, 9)
 
+engine.addSystem(snake)

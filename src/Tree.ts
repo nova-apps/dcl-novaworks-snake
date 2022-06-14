@@ -5,12 +5,13 @@ export class Tree{
     public tree = new Entity()
     public treeTrigger = new utils.TriggerBoxShape
 
-    constructor(){
+    constructor(public ui: UI, public xPosition: number, public zPosition: number){
+        this.ui = ui
         this.tree.addComponent(new Transform({
-            position: new Vector3(3, 1, 3),
-            scale: new Vector3(1, 1, 1)
-        
+            position: new Vector3(xPosition, 1, zPosition),
         }))
+
+        this.treeTrigger.size = new Vector3(0.7, 1, 0.7)
 
         this.tree.addComponent(
             new utils.TriggerComponent(
@@ -19,10 +20,13 @@ export class Tree{
                     layer: 1,
                     onTriggerEnter : () => {
                         log('TREE!')
-                        // this.ui.resetScore()
-                    }
+                        this.ui.resetScore()
+                    },
+                    enableDebug: true
                 }
             )
         )
+
+        engine.addEntity(this.tree)
     }
 }

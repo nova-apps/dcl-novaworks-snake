@@ -3,7 +3,7 @@ import * as utils from '@dcl/ecs-scene-utils'
 import { Snake } from './Snake'
 import { UI } from './UI'
 
-export class Enviorment {
+export class Wall {
     constructor(public snake: Snake, public ui: UI){
         this.snake = snake
         this.ui = ui

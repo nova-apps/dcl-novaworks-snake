@@ -5,7 +5,7 @@ import { Segment } from "./Segment";
 import * as utils from '@dcl/ecs-scene-utils'
 
 export class Snake implements ISystem{
-    public head: Head = new Head(this) // So we can access to the snake from the head
+    public head: Head  = new Head(this)// So we can access to the snake from the head
     public body: any = []
 
     constructor(){
@@ -17,14 +17,7 @@ export class Snake implements ISystem{
         initPos : Vector3 = new Vector3(32, 1, 16)
     ){
         this.head = new Head(this) // So we can access to the snake from the head
-        this.head.addComponent(new GLTFShape("models/HeadSnake.glb"))
-        this.head.addComponent(
-          new Transform({
-            rotation: new Quaternion(0, 1, 0, -1),
-            position: initPos,
-          })
-        )
-        engine.addEntity(this.head)
+        this.head.add(initPos)
         this.addSegment(this.head) // segmento 0 aka cuello
     }
 
@@ -38,55 +31,39 @@ export class Snake implements ISystem{
 
     public die(){
         log('I die')
-        Segment.quantity = 0
         this.head.direction = ''
-        // https://docs.decentraland.org/development-guide/entities-components/#pooling-entities-and-components
 
+        // https://docs.decentraland.org/development-guide/entities-components/#pooling-entities-and-components
         //engine.removeEntity(this.head)
 
+        // https://github.com/decentraland-scenes/lazy-loading/blob/7012e3fa6d346b11066b8925150b1cedd8a5dd08/src/subScene.ts#L35
+
+        this.head.getComponent('engine.shape').visible = false
         for(let s in this.body){
           let segment = this.body[s]
-          engine.removeEntity(segment)
+          segment.remove()
         }
-        this.reborn()
+        this.respawn()
     }
 
-    public reborn(){
-
-      //Define start and end positions
-      let StartPos = this.head.getComponent(Transform).position 
-      let EndPos = new Vector3(32, 1, 16)
+    public respawn(){
+      let startPos = this.head.getComponent(Transform).position 
+      let endPos = new Vector3(32, 1, 16)
       //let randomPos : Vector3 = new Vector3(2,1,6)
-      
-      // Move entity
       this.head.addComponent(
-        new utils.MoveTransformComponent(StartPos, EndPos, 0)
+        new utils.MoveTransformComponent(
+          startPos,
+          endPos,
+          0,
+          () => {
+            this.head.getComponent(Transform).rotation.set(0, 1, 0, -1)
+            log('finished moving box')
+            this.head.getComponent('engine.shape').visible = true
+            this.addSegment(this.head) // segmento 0 aka cuello
+          }
+        )
       )
 
-      this.head.getComponent(Transform).rotation.set(0, 1, 0, -1)
-      // Add entity to engine
-      engine.addEntity(this.head)
-
-      // this.head.addComponent(
-      //     new utils.TriggerComponent(
-      //       new utils.TriggerBoxShape(),
-      //         {
-      //             enableDebug : true,
-      //             triggeredByLayer: 1,
-      //             onTriggerEnter : () => {
-      //                     this.head.hit()
-      //             }
-      //         },
-      //     )
-      // )
-
-      //this.addSegment//egment(this.head) // segmento 0 aka cuello
-      //this.head.addComponent(
-      //  new Transform({
-      //    rotation: new Quaternion(0, 1, 0, -1),
-      //    position: randomPos,
-      //  })
-      //)
 
     }
 

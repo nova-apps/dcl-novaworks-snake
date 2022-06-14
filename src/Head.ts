@@ -10,7 +10,9 @@ export class Head extends Node{
     public name? : string = 'head'
 
     public headTrigger : Entity = new Entity()
-    
+
+    public shape : GLTFShape = new GLTFShape("models/HeadSnake.glb")
+
     constructor(
         public snake : Snake
     ){
@@ -20,12 +22,23 @@ export class Head extends Node{
         this.addMouth()
     }
 
+    public add(pos : Vector3){
+        this.addComponent(this.shape)
+        this.addComponent(
+          new Transform({
+            rotation: new Quaternion(0, 1, 0, -1),
+            position: pos,
+          })
+        )
+        engine.addEntity(this)
+    }
+
     public addWallTrigger(){
         this.addComponent(
             new utils.TriggerComponent(
               new utils.TriggerBoxShape(),
                 {
-                    enableDebug : false,
+                    enableDebug :false,
                     triggeredByLayer: 1,
                     onTriggerEnter : () => {
                         this.hit()
@@ -37,6 +50,7 @@ export class Head extends Node{
 
     /* Head hits Wall or own Body */ 
     public hit(){
+        //this.removeComponent(this.shape)
         this.snake.die()
     }
 
@@ -72,17 +86,10 @@ export class Head extends Node{
             this.direction = 'NORTH'
             this.removeComponent(utils.FollowPathComponent)
             let newPath = []
-            newPath[0] = new Vector3(
-                this.getComponent(Transform).position.x,
-                this.getComponent(Transform).position.y,
-                this.getComponent(Transform).position.z
-            )
-            newPath[1] = new Vector3(
-                this.getComponent(Transform).position.x,
-                this.getComponent(Transform).position.y,
-                64
-            )
-            this.addComponent(new utils.FollowPathComponent(newPath, this.getPathTime(this.getComponent(Transform).position.z)))
+            let position = this.getComponent(Transform).position
+            newPath[0] = new Vector3( position.x, position.y, position.z)
+            newPath[1] = new Vector3( position.x, position.y, 64)
+            this.addComponent(new utils.FollowPathComponent(newPath, this.getPathTime(position.z)))
             this.getComponent(Transform).rotation.set(0, 1, 0, -1)
         }
     }
@@ -92,17 +99,10 @@ export class Head extends Node{
             this.direction = 'WEST'
             this.removeComponent(utils.FollowPathComponent)
             let newPath = []
-            newPath[0] = new Vector3(
-                this.getComponent(Transform).position.x,
-                this.getComponent(Transform).position.y,
-                this.getComponent(Transform).position.z
-            )
-            newPath[1] = new Vector3(
-                64,
-                this.getComponent(Transform).position.y,
-                this.getComponent(Transform).position.z
-            )
-            this.addComponent(new utils.FollowPathComponent(newPath, this.getPathTime(this.getComponent(Transform).position.x)))
+            let position = this.getComponent(Transform).position
+            newPath[0] = new Vector3( position.x, position.y, position.z)
+            newPath[1] = new Vector3( 64, position.y, position.z)
+            this.addComponent(new utils.FollowPathComponent(newPath, this.getPathTime(position.x)))
             this.getComponent(Transform).rotation.set(0, 0, 0, 1)
         }
     }
@@ -112,17 +112,10 @@ export class Head extends Node{
             this.direction = 'EAST'
             this.removeComponent(utils.FollowPathComponent)
             let newPath = []
-            newPath[0] = new Vector3(
-                this.getComponent(Transform).position.x,
-                this.getComponent(Transform).position.y,
-                this.getComponent(Transform).position.z
-            )
-            newPath[1] = new Vector3(
-                0,
-                this.getComponent(Transform).position.y,
-                this.getComponent(Transform).position.z
-            )
-            this.addComponent(new utils.FollowPathComponent(newPath, this.getPathTime(64 - this.getComponent(Transform).position.x)))
+            let position = this.getComponent(Transform).position
+            newPath[0] = new Vector3( position.x, position.y, position.z)
+            newPath[1] = new Vector3( 0, position.y, position.z)
+            this.addComponent(new utils.FollowPathComponent(newPath, this.getPathTime(64 - position.x)))
             this.getComponent(Transform).rotation.set(0, 1, 0, 0)
         }
     }
@@ -132,17 +125,10 @@ export class Head extends Node{
             this.direction = 'SOUTH'
             this.removeComponent(utils.FollowPathComponent)
             let newPath = []
-            newPath[0] = new Vector3(
-                this.getComponent(Transform).position.x,
-                this.getComponent(Transform).position.y,
-                this.getComponent(Transform).position.z
-            )
-            newPath[1] = new Vector3(
-                this.getComponent(Transform).position.x,
-                this.getComponent(Transform).position.y,
-                0
-            )
-            this.addComponent(new utils.FollowPathComponent(newPath, this.getPathTime(64 - this.getComponent(Transform).position.z)))
+            let position = this.getComponent(Transform).position
+            newPath[0] = new Vector3( position.x, position.y, position.z)
+            newPath[1] = new Vector3( position.x, position.y, 0)
+            this.addComponent(new utils.FollowPathComponent(newPath, this.getPathTime(64 - position.z)))
             this.getComponent(Transform).rotation.set(0, 1, 0, 1)
         }
     }

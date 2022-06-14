@@ -33,6 +33,12 @@ export class Segment extends Node{
         this.transform = this.getComponent(Transform)
         engine.addEntity(this)
     }
+    public remove(){
+        engine.removeEntity(this)
+        if(Segment.quantity < 0){
+            Segment.quantity--
+        }
+    }
 
     public follow(){
         let originalPos = this.getComponent(Transform).position

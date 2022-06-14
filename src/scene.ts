@@ -180,7 +180,7 @@ puente50.addComponentOrReplace(puente50GLTFShape)
 const pueste253 = new Entity("Pueste  2")
 engine.addEntity(pueste253)
 const pueste253transform = new Transform({
-  position: new Vector3(15.58878, 1.5, -1),
+  position: new Vector3(13.89121, 1.5, -1),
   rotation: new Quaternion(0, 0.7071074, 0, -0.7071062),
   scale: new Vector3(1, 1, 1)
 })

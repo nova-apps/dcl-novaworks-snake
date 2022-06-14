@@ -34,7 +34,7 @@ export class Apple extends Entity {
   }
 
   public eaten() {
-    this.getComponent(Transform).position = new Vector3(2 + Math.random() * 16, 1, 2 + Math.random() * 16)
+    this.getComponent(Transform).position = new Vector3(2 + Math.random() * 28, 1, 2 + Math.random() * 28)
     //this.snake.addSegment(this.snake.body[Segment.quantity - 1])
     this.snake.addSegment()
 

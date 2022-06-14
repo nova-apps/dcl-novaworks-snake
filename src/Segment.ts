@@ -13,13 +13,14 @@ export class Segment extends Node{
         public prevNode: Node,
     ){
         super();
-        this.id = Segment.quantity
+        //this.id = Segment.quantity
         Segment.record = Segment.quantity
         Segment.quantity++
         this.add()
     }
 
     public add(){
+        this.id = Segment.quantity - 1
         this.addComponent(Segment.shape)
         let prevNodePos = this.prevNode.getComponent(Transform).position
         // TODO: Revisar esto para que empiece mas atras del anterior
@@ -68,9 +69,11 @@ export class Segment extends Node{
         if(this.id.valueOf() > 3){
             log( "DIS:", this.id.valueOf().toString(), dis )
         }
-        if(this.id.valueOf() > 3 && dis < 5){
-           log('me muerde')
-           return true
+        if(this.id.valueOf() > 5 ){
+          if(dis < 5){
+              log('me muerde')
+              return true
+          }
         }
         return false
     }

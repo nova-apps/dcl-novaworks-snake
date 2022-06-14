@@ -1,0 +1,77 @@
+{
+    "entityNumberCounter": 24,
+    "entities": [
+        {
+            "hierarchyOrder": 3.0,
+            "name": "Pared",
+            "uniqueNumber": 17,
+            "parent": -1,
+            "exposed": false,
+            "collapsedChildren": false,
+            "components": [
+                {
+                    "name": "transform",
+                    "specifics": "{\"pos\":{\"x\":0.5,\"y\":1.0,\"z\":15.887659072875977},\"rot\":{\"x\":0.0,\"y\":0.7071068286895752,\"z\":0.0,\"w\":-0.7071068286895752},\"scale\":{\"x\":1.2490386962890626,\"y\":1.0,\"z\":1.0}}"
+                },
+                {
+                    "name": "GLTFShape",
+                    "specifics": "{\"assetID\":\"9c5f93d8-4e53-4bfa-b484-4529673a197e\"}"
+                }
+            ]
+        },
+        {
+            "hierarchyOrder": 2.0,
+            "name": "Pared",
+            "uniqueNumber": 19,
+            "parent": -1,
+            "exposed": false,
+            "collapsedChildren": false,
+            "components": [
+                {
+                    "name": "transform",
+                    "specifics": "{\"pos\":{\"x\":15.165216445922852,\"y\":0.75,\"z\":0.5},\"rot\":{\"x\":0.0,\"y\":0.0,\"z\":0.0,\"w\":1.0},\"scale\":{\"x\":1.1871967315673829,\"y\":1.0,\"z\":1.0}}"
+                },
+                {
+                    "name": "GLTFShape",
+                    "specifics": "{\"assetID\":\"9c5f93d8-4e53-4bfa-b484-4529673a197e\"}"
+                }
+            ]
+        },
+        {
+            "hierarchyOrder": 1.0,
+            "name": "Piso",
+            "uniqueNumber": 21,
+            "parent": -1,
+            "exposed": false,
+            "collapsedChildren": false,
+            "components": [
+                {
+                    "name": "transform",
+                    "specifics": "{\"pos\":{\"x\":30.618518829345704,\"y\":0.015165328979492188,\"z\":0.1412506103515625},\"rot\":{\"x\":0.0,\"y\":0.0,\"z\":0.0,\"w\":1.0},\"scale\":{\"x\":1.2271671295166016,\"y\":0.49288734793663027,\"z\":1.2564036846160889}}"
+                },
+                {
+                    "name": "GLTFShape",
+                    "specifics": "{\"assetID\":\"fd7fbb46-94fe-46c4-a292-0917618e6d0c\"}"
+                }
+            ]
+        },
+        {
+            "hierarchyOrder": 0.0,
+            "name": "Pared",
+            "uniqueNumber": 23,
+            "parent": -1,
+            "exposed": false,
+            "collapsedChildren": false,
+            "components": [
+                {
+                    "name": "transform",
+                    "specifics": "{\"pos\":{\"x\":3.5047409534454347,\"y\":0.9413652420043945,\"z\":15.908233642578125},\"rot\":{\"x\":0.0,\"y\":-0.7071065902709961,\"z\":0.0,\"w\":0.7071070075035095},\"scale\":{\"x\":1.0,\"y\":1.0,\"z\":1.0}}"
+                },
+                {
+                    "name": "GLTFShape",
+                    "specifics": "{\"assetID\":\"9c5f93d8-4e53-4bfa-b484-4529673a197e\"}"
+                }
+            ]
+        }
+    ]
+}

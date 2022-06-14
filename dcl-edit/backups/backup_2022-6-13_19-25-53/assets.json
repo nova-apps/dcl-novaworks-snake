@@ -1,0 +1,69 @@
+{
+    "gltfAssets": [
+        {
+            "name": "Apple",
+            "id": "c04bc733-32fc-4b0a-9d7e-42f9b003d927",
+            "gltfPath": "models/Apple.glb"
+        },
+        {
+            "name": "Body Sneake",
+            "id": "ac4675cb-2f39-4e6f-bf41-f8b5684c9f70",
+            "gltfPath": "models/BodySneake.glb"
+        },
+        {
+            "name": "Head Snake",
+            "id": "b56fa4a9-669a-4124-884f-de3d0c769fcb",
+            "gltfPath": "models/HeadSnake.glb"
+        },
+        {
+            "name": "Pared",
+            "id": "9c5f93d8-4e53-4bfa-b484-4529673a197e",
+            "gltfPath": "models/Pared.glb"
+        },
+        {
+            "name": "Taill Snake",
+            "id": "783952fc-5abd-40f5-841d-b316284cc25b",
+            "gltfPath": "models/TaillSnake.glb"
+        },
+        {
+            "name": "Piso",
+            "id": "fd7fbb46-94fe-46c4-a292-0917618e6d0c",
+            "gltfPath": "models/Piso.glb"
+        },
+        {
+            "name": "flores",
+            "id": "191db41c-dfec-49fc-8867-75f7f601abd4",
+            "gltfPath": "models/flores.glb"
+        },
+        {
+            "name": "flores 2",
+            "id": "ebd90720-cefb-4dc3-bd19-d5fa7c8032de",
+            "gltfPath": "models/flores 2.glb"
+        },
+        {
+            "name": "Arbol",
+            "id": "448a8fbe-39c0-4a5a-b7f8-3b8dcd4bd6d6",
+            "gltfPath": "models/Arbol.glb"
+        },
+        {
+            "name": "Arbol 2",
+            "id": "50cf45fc-4634-4844-9051-3c3605f04332",
+            "gltfPath": "models/Arbol 2.glb"
+        },
+        {
+            "name": "Pared 2",
+            "id": "cd65e17e-e7b2-4509-9396-aabf6aa32f50",
+            "gltfPath": "models/Pared 2.glb"
+        },
+        {
+            "name": "Pueste ",
+            "id": "ad12d51f-597f-4010-a47f-992530747ccb",
+            "gltfPath": "models/Pueste .glb"
+        },
+        {
+            "name": "Agua",
+            "id": "b018a9f4-e1c3-4c40-9b28-4a3371dd44ae",
+            "gltfPath": "models/Agua.glb"
+        }
+    ]
+}

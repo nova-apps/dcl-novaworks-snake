@@ -1,0 +1,257 @@
+{
+    "entityNumberCounter": 55,
+    "entities": [
+        {
+            "hierarchyOrder": 13.0,
+            "name": "Piso",
+            "uniqueNumber": 21,
+            "parent": -1,
+            "exposed": false,
+            "collapsedChildren": false,
+            "components": [
+                {
+                    "name": "transform",
+                    "specifics": "{\"pos\":{\"x\":30.618518829345704,\"y\":-0.13660383224487306,\"z\":-0.007854938507080078},\"rot\":{\"x\":0.0,\"y\":0.0,\"z\":0.0,\"w\":1.0},\"scale\":{\"x\":1.2271671295166016,\"y\":0.49288734793663027,\"z\":1.4367005825042725}}"
+                },
+                {
+                    "name": "GLTFShape",
+                    "specifics": "{\"assetID\":\"fd7fbb46-94fe-46c4-a292-0917618e6d0c\"}"
+                }
+            ]
+        },
+        {
+            "hierarchyOrder": 11.0,
+            "name": "flores 2",
+            "uniqueNumber": 28,
+            "parent": -1,
+            "exposed": false,
+            "collapsedChildren": false,
+            "components": [
+                {
+                    "name": "transform",
+                    "specifics": "{\"pos\":{\"x\":8.394949913024903,\"y\":-0.007206916809082031,\"z\":12.698863983154297},\"rot\":{\"x\":0.0,\"y\":0.0,\"z\":0.0,\"w\":1.0},\"scale\":{\"x\":0.6783227324485779,\"y\":0.6783227324485779,\"z\":0.6933383345603943}}"
+                },
+                {
+                    "name": "GLTFShape",
+                    "specifics": "{\"assetID\":\"ebd90720-cefb-4dc3-bd19-d5fa7c8032de\"}"
+                }
+            ]
+        },
+        {
+            "hierarchyOrder": 12.0,
+            "name": "flores 2",
+            "uniqueNumber": 29,
+            "parent": -1,
+            "exposed": false,
+            "collapsedChildren": false,
+            "components": [
+                {
+                    "name": "transform",
+                    "specifics": "{\"pos\":{\"x\":23.891504287719728,\"y\":-0.013256072998046875,\"z\":12.912257194519043},\"rot\":{\"x\":0.0,\"y\":0.0,\"z\":0.0,\"w\":1.0},\"scale\":{\"x\":0.591413676738739,\"y\":0.591413676738739,\"z\":0.6549169421195984}}"
+                },
+                {
+                    "name": "GLTFShape",
+                    "specifics": "{\"assetID\":\"ebd90720-cefb-4dc3-bd19-d5fa7c8032de\"}"
+                }
+            ]
+        },
+        {
+            "hierarchyOrder": 10.0,
+            "name": "flores 2",
+            "uniqueNumber": 30,
+            "parent": -1,
+            "exposed": false,
+            "collapsedChildren": false,
+            "components": [
+                {
+                    "name": "transform",
+                    "specifics": "{\"pos\":{\"x\":8.342591285705567,\"y\":0.0077190399169921879,\"z\":28.275957107543947},\"rot\":{\"x\":0.0,\"y\":0.0,\"z\":0.0,\"w\":1.0},\"scale\":{\"x\":0.6596638560295105,\"y\":0.6596638560295105,\"z\":0.5995118021965027}}"
+                },
+                {
+                    "name": "GLTFShape",
+                    "specifics": "{\"assetID\":\"ebd90720-cefb-4dc3-bd19-d5fa7c8032de\"}"
+                }
+            ]
+        },
+        {
+            "hierarchyOrder": 9.0,
+            "name": "flores 2",
+            "uniqueNumber": 31,
+            "parent": -1,
+            "exposed": false,
+            "collapsedChildren": false,
+            "components": [
+                {
+                    "name": "transform",
+                    "specifics": "{\"pos\":{\"x\":23.65889549255371,\"y\":-0.04966449737548828,\"z\":27.996416091918947},\"rot\":{\"x\":0.0,\"y\":-0.7125153541564941,\"z\":0.0,\"w\":0.7016565203666687},\"scale\":{\"x\":0.5699023008346558,\"y\":0.5699023008346558,\"z\":0.5699023008346558}}"
+                },
+                {
+                    "name": "GLTFShape",
+                    "specifics": "{\"assetID\":\"ebd90720-cefb-4dc3-bd19-d5fa7c8032de\"}"
+                }
+            ]
+        },
+        {
+            "hierarchyOrder": 8.0,
+            "name": "Pared 2",
+            "uniqueNumber": 36,
+            "parent": -1,
+            "exposed": false,
+            "collapsedChildren": false,
+            "components": [
+                {
+                    "name": "transform",
+                    "specifics": "{\"pos\":{\"x\":15.453121185302735,\"y\":0.9460868835449219,\"z\":4.623610019683838},\"rot\":{\"x\":0.0,\"y\":0.0,\"z\":0.0,\"w\":1.0},\"scale\":{\"x\":1.2013053894042969,\"y\":1.0,\"z\":1.0}}"
+                },
+                {
+                    "name": "GLTFShape",
+                    "specifics": "{\"assetID\":\"cd65e17e-e7b2-4509-9396-aabf6aa32f50\"}"
+                }
+            ]
+        },
+        {
+            "hierarchyOrder": 7.0,
+            "name": "Pared 2",
+            "uniqueNumber": 37,
+            "parent": -1,
+            "exposed": false,
+            "collapsedChildren": false,
+            "components": [
+                {
+                    "name": "transform",
+                    "specifics": "{\"pos\":{\"x\":30.39264488220215,\"y\":0.9326324462890625,\"z\":19.90849494934082},\"rot\":{\"x\":0.0,\"y\":0.7071065902709961,\"z\":0.0,\"w\":0.7071070075035095},\"scale\":{\"x\":1.2464485168457032,\"y\":1.0,\"z\":1.0}}"
+                },
+                {
+                    "name": "GLTFShape",
+                    "specifics": "{\"assetID\":\"cd65e17e-e7b2-4509-9396-aabf6aa32f50\"}"
+                }
+            ]
+        },
+        {
+            "hierarchyOrder": 5.0,
+            "name": "Pared 2",
+            "uniqueNumber": 38,
+            "parent": -1,
+            "exposed": false,
+            "collapsedChildren": false,
+            "components": [
+                {
+                    "name": "transform",
+                    "specifics": "{\"pos\":{\"x\":0.4471544921398163,\"y\":0.9424221515655518,\"z\":19.972200393676759},\"rot\":{\"x\":0.0,\"y\":0.7071065902709961,\"z\":0.0,\"w\":0.7071070075035095},\"scale\":{\"x\":1.251718521118164,\"y\":1.0,\"z\":1.0}}"
+                },
+                {
+                    "name": "GLTFShape",
+                    "specifics": "{\"assetID\":\"cd65e17e-e7b2-4509-9396-aabf6aa32f50\"}"
+                }
+            ]
+        },
+        {
+            "hierarchyOrder": 6.0,
+            "name": "Pared 2",
+            "uniqueNumber": 39,
+            "parent": -1,
+            "exposed": false,
+            "collapsedChildren": false,
+            "components": [
+                {
+                    "name": "transform",
+                    "specifics": "{\"pos\":{\"x\":15.367904663085938,\"y\":0.9409933090209961,\"z\":35.32377624511719},\"rot\":{\"x\":0.0,\"y\":0.0,\"z\":0.0,\"w\":1.0},\"scale\":{\"x\":1.1956806182861329,\"y\":1.0,\"z\":1.0}}"
+                },
+                {
+                    "name": "GLTFShape",
+                    "specifics": "{\"assetID\":\"cd65e17e-e7b2-4509-9396-aabf6aa32f50\"}"
+                }
+            ]
+        },
+        {
+            "hierarchyOrder": 4.0,
+            "name": "Arbol 2",
+            "uniqueNumber": 45,
+            "parent": -1,
+            "exposed": false,
+            "collapsedChildren": false,
+            "components": [
+                {
+                    "name": "transform",
+                    "specifics": "{\"pos\":{\"x\":23.992568969726564,\"y\":3.575039863586426,\"z\":13.23430061340332},\"rot\":{\"x\":0.0,\"y\":0.0,\"z\":0.0,\"w\":1.0},\"scale\":{\"x\":0.5151526927947998,\"y\":0.5151526927947998,\"z\":0.5151526927947998}}"
+                },
+                {
+                    "name": "GLTFShape",
+                    "specifics": "{\"assetID\":\"50cf45fc-4634-4844-9051-3c3605f04332\"}"
+                }
+            ]
+        },
+        {
+            "hierarchyOrder": 3.0,
+            "name": "Arbol 2",
+            "uniqueNumber": 46,
+            "parent": -1,
+            "exposed": false,
+            "collapsedChildren": false,
+            "components": [
+                {
+                    "name": "transform",
+                    "specifics": "{\"pos\":{\"x\":5.703234672546387,\"y\":3.599061965942383,\"z\":26.38054847717285},\"rot\":{\"x\":0.0,\"y\":0.0,\"z\":0.0,\"w\":1.0},\"scale\":{\"x\":0.520534873008728,\"y\":0.520534873008728,\"z\":0.520534873008728}}"
+                },
+                {
+                    "name": "GLTFShape",
+                    "specifics": "{\"assetID\":\"50cf45fc-4634-4844-9051-3c3605f04332\"}"
+                }
+            ]
+        },
+        {
+            "hierarchyOrder": 2.0,
+            "name": "Puente",
+            "uniqueNumber": 50,
+            "parent": -1,
+            "exposed": false,
+            "collapsedChildren": false,
+            "components": [
+                {
+                    "name": "transform",
+                    "specifics": "{\"pos\":{\"x\":12.698263168334961,\"y\":1.662062168121338,\"z\":3.2050585746765138},\"rot\":{\"x\":0.0,\"y\":0.7171433568000794,\"z\":0.0,\"w\":-0.696925699710846},\"scale\":{\"x\":1.0,\"y\":1.0,\"z\":1.0}}"
+                },
+                {
+                    "name": "GLTFShape",
+                    "specifics": "{\"assetID\":\"e8a265fa-fd29-4f28-b9e0-4f442a497a07\"}"
+                }
+            ]
+        },
+        {
+            "hierarchyOrder": 1.0,
+            "name": "Pueste  2",
+            "uniqueNumber": 53,
+            "parent": -1,
+            "exposed": false,
+            "collapsedChildren": false,
+            "components": [
+                {
+                    "name": "transform",
+                    "specifics": "{\"pos\":{\"x\":13.0,\"y\":1.5,\"z\":3.25},\"rot\":{\"x\":0.0,\"y\":0.707107424736023,\"z\":0.0,\"w\":-0.7071061730384827},\"scale\":{\"x\":1.0,\"y\":1.0,\"z\":1.0}}"
+                },
+                {
+                    "name": "GLTFShape",
+                    "specifics": "{\"assetID\":\"13df4805-9e24-46d5-977b-bc5ec1d2ffcc\"}"
+                }
+            ]
+        },
+        {
+            "hierarchyOrder": 0.0,
+            "name": "Puerta",
+            "uniqueNumber": 54,
+            "parent": -1,
+            "exposed": false,
+            "collapsedChildren": false,
+            "components": [
+                {
+                    "name": "transform",
+                    "specifics": "{\"pos\":{\"x\":53.8857307434082,\"y\":3.942355155944824,\"z\":4.978353500366211},\"rot\":{\"x\":0.0,\"y\":-0.707107424736023,\"z\":0.0,\"w\":-0.7071061730384827},\"scale\":{\"x\":0.5364112854003906,\"y\":0.5364112854003906,\"z\":0.5364112854003906}}"
+                },
+                {
+                    "name": "GLTFShape",
+                    "specifics": "{\"assetID\":\"03126d61-4780-4688-b715-dcf8483cca0e\"}"
+                }
+            ]
+        }
+    ]
+}

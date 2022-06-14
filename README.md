@@ -4,6 +4,20 @@
 
 Based on the famous Snake game. Created for the [Decentraland Game Jam 2022](https://decentraland.org/blog/announcements/the-2022-decentraland-game-jam-is-here/) 
 
+## Scene Usage
+
+On stage you will see a play area surrounded by walls and a wooden platform from where you can see the entire section.
+
+Inside that area you can control a hungry snake. Mantain pressed shift to move it with WASD or use the arrows in the UI.
+
+The goal is to eat the apples that appear on the stage. But be careful! Each apple increases the size of your snake.
+
+If you hit your head against your tail, against a wall or against a tree, the game will restart.
+
+## DCL Edit
+
+We were happy to use DCL Edit to create the graphic part of the scene. You can try it [here](https://dcl-edit.com/).
+
 ## Try it out
 
 **Install the CLI**
@@ -23,20 +37,6 @@ $  dcl start
 ```
 
 Any dependencies are installed and then the CLI opens the scene in a new browser tab.
-
-**Scene Usage**
-
-On stage you will see a play area surrounded by walls and a wooden platform from where you can see the entire section.
-
-Inside that area you can control a hungry snake. Mantain pressed shift to move it with WASD or use the arrows in the UI.
-
-The goal is to eat the apples that appear on the stage. But be careful! Each apple increases the size of your snake.
-
-If you hit your head against your tail, against a wall or against a tree, the game will restart.
-
-## DCL Edit
-
-We were happy to use DCL Edit to create the graphic part of the scene. You can try it [here](https://dcl-edit.com/).
 
 ## About Novaworks
 

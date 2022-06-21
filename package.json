@@ -19,7 +19,7 @@
   "engines": {
     "node": ">=14.0.0",
     "npm": ">=6.0.0",
-    "yarn": "please use npm"
+    "yarn": ">=1.22.18"
   },
   "dependencies": {
     "@dcl/ecs-scene-utils": "^1.7.5"
